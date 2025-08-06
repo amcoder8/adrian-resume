@@ -1,16 +1,48 @@
 ---
-
+import Layout from '../components/Layout';
 ---
 
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		
+		<!-- SEO Meta Tags -->
+		<title>Adrian - Frontend Developer | Professional Resume</title>
+		<meta name="description" content="Adrian - Passionate Frontend Developer specializing in React, Astro, TypeScript, and modern web technologies. View my professional resume and portfolio." />
+		<meta name="keywords" content="frontend developer, react developer, astro, typescript, javascript, web developer, portfolio, resume" />
+		<meta name="author" content="Adrian" />
+		
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="https://adrian-resume.netlify.app/" />
+		<meta property="og:title" content="Adrian - Frontend Developer" />
+		<meta property="og:description" content="Passionate Frontend Developer creating beautiful, functional web experiences with modern technologies." />
+		<meta property="og:image" content="/og-image.jpg" />
+		
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content="https://adrian-resume.netlify.app/" />
+		<meta property="twitter:title" content="Adrian - Frontend Developer" />
+		<meta property="twitter:description" content="Passionate Frontend Developer creating beautiful, functional web experiences with modern technologies." />
+		<meta property="twitter:image" content="/og-image.jpg" />
+		
+		<!-- Favicon -->
+		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+		<link rel="manifest" href="/site.webmanifest" />
+		
+		<!-- Preconnect to external domains -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		
+		<!-- Google Fonts -->
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 	</head>
 	<body>
-		<h1>Astro</h1>
+		<Layout client:load />
 	</body>
 </html>

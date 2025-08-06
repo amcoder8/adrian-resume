@@ -1,0 +1,73 @@
+import React, { useEffect } from 'react';
+import AOS from 'aos';
+import { ThemeProvider } from './ThemeProvider';
+import Header from './Header';
+import Hero from './Hero';
+import About from './About';
+import Skills from './Skills';
+import Contact from './Contact';
+import Footer from './Footer';
+
+// Import styles
+import '../styles/main.scss';
+
+const Layout: React.FC = () => {
+  useEffect(() => {
+    // Initialize AOS (Animate On Scroll)
+    AOS.init({
+      duration: 800,
+      delay: 100,
+      once: true,
+      easing: 'ease-out-cubic'
+    });
+
+    // Refresh AOS on route changes
+    AOS.refresh();
+  }, []);
+
+  // Personal information data
+  const personalInfo = {
+    name: 'Adrian',
+    title: 'Frontend Developer',
+    tagline: 'Passionate developer creating beautiful, functional web experiences with modern technologies.',
+    email: 'adrian@example.com',
+    phone: '+1 (555) 123-4567',
+    location: 'New York, NY'
+  };
+
+  // Social links data
+  const socialLinks = [
+    {
+      platform: 'github',
+      url: 'https://github.com/adrian',
+      icon: 'FaGithub'
+    },
+    {
+      platform: 'linkedin',
+      url: 'https://linkedin.com/in/adrian',
+      icon: 'FaLinkedin'
+    },
+    {
+      platform: 'email',
+      url: 'mailto:adrian@example.com',
+      icon: 'FaEnvelope'
+    }
+  ];
+
+  return (
+    <ThemeProvider>
+      <div className="App">
+        <Header />
+        <main>
+          <Hero personalInfo={personalInfo} socialLinks={socialLinks} />
+          <About />
+          <Skills />
+          <Contact />
+        </main>
+        <Footer />
+      </div>
+    </ThemeProvider>
+  );
+};
+
+export default Layout;
