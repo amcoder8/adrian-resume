@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { 
-  FaGamepad, 
-  FaCode, 
+import {
+  FaGamepad,
+  FaCode,
   FaGraduationCap,
   FaBriefcase,
   FaHeart,
@@ -61,7 +61,7 @@ const About: React.FC = () => {
   useEffect(() => {
     const interestKeys: InterestKey[] = ['tech', 'music', 'gaming'];
     let currentIndex = interestKeys.indexOf(activeInterest);
-    
+
     const interval = setInterval(() => {
       currentIndex = (currentIndex + 1) % interestKeys.length;
       setActiveInterest(interestKeys[currentIndex]);
@@ -167,7 +167,7 @@ const About: React.FC = () => {
           <p className="section-subtitle">
             Passionate developer crafting digital experiences with creativity and precision
           </p>
-          
+
           {/* Horizontal Navigation Tabs */}
           <div className="horizontal-tabs-nav">
             <div className="tabs-container">
@@ -185,7 +185,7 @@ const About: React.FC = () => {
           </div>
         </div>
       </div>
-      
+
       {/* Content Area with Fixed Height */}
       <div className="about-content">
         <div className="container h-100">
@@ -201,14 +201,14 @@ const About: React.FC = () => {
                         <FaCode className="profile-icon" />
                         <span>Professional Photo</span>
                       </div>
-                      
+
                       {/* Core Strengths Pills */}
                       <div className="core-strengths">
                         <h5 className="mb-3">Core Strengths</h5>
                         <div className="strengths-grid">
                           {personalTraits.map((trait, index) => (
-                            <span 
-                              key={trait} 
+                            <span
+                              key={trait}
                               className={`strength-pill ${hoveredStrength === trait ? 'hovered' : ''}`}
                               onMouseEnter={() => setHoveredStrength(trait)}
                               onMouseLeave={() => setHoveredStrength(null)}
@@ -224,7 +224,7 @@ const About: React.FC = () => {
                     </div>
                   </div>
                 </div>
-                
+
                 {/* Right Column - Detailed Content */}
                 <div className="col-md-6 ps-4">
                   <div className="content-scroll h-100">
@@ -234,42 +234,42 @@ const About: React.FC = () => {
                         <h4>Albanian Heritage</h4>
                       </div>
                       <p className="content-text">
-                        Born and raised in Chicago with proud Albanian roots, I bring a unique 
-                        perspective that blends the innovative spirit of the Windy City with 
-                        the resilience and craftsmanship traditions of Albania. My Albanian heritage has instilled in me 
-                        values of hard work, loyalty, and attention to detail—qualities that translate 
+                        Born and raised in Chicago with proud Albanian roots, I bring a unique
+                        perspective that blends the innovative spirit of the Windy City with
+                        the resilience and craftsmanship traditions of Albania. My Albanian heritage has instilled in me
+                        values of hard work, loyalty, and attention to detail—qualities that translate
                         directly into my approach to development.
                       </p>
                     </div>
-                    
+
                     <div className="passion-block mb-4">
                       <div className="content-header">
                         <FaLaptopCode className="content-icon" />
                         <h4>Tech Passion</h4>
                       </div>
                       <p className="content-text">
-                        Always exploring and wanting to know more, from a young age I was 
-                        fascinated by technology, games, superheroes, and music. I'm a true nerd at heart, 
-                        passionate about tech and how it works. I took it upon myself to build my own 
-                        PC and learn more about how it all works—from the hardware to the software. 
-                        I loved it and continue to love it, growing my skills every day to just have 
+                        Always exploring and wanting to know more, from a young age I was
+                        fascinated by technology, games, superheroes, and music. I'm a true nerd at heart,
+                        passionate about tech and how it works. I took it upon myself to build my own
+                        PC and learn more about how it all works—from the hardware to the software.
+                        I loved it and continue to love it, growing my skills every day to just have
                         fun and learn more.
                       </p>
                     </div>
-                    
+
                     <div className="philosophy-block">
                       <div className="content-header">
                         <FaBriefcase className="content-icon" />
                         <h4>Development Philosophy</h4>
                       </div>
                       <blockquote className="philosophy-quote">
-                        "Whether I'm crafting clean, efficient code or diving into music production, 
-                        I approach every project with the same dedication to excellence that defines 
+                        "Whether I'm crafting clean, efficient code or diving into music production,
+                        I approach every project with the same dedication to excellence that defines
                         both Chicago's architectural marvels and Albania's rich cultural heritage."
                       </blockquote>
                       <p className="content-text mt-3">
-                        When I'm not coding, you'll find me exploring Chicago's neighborhoods, producing 
-                        music, reading, or immersed in classic games like the Assassin's Creed trilogy 
+                        When I'm not coding, you'll find me exploring Chicago's neighborhoods, producing
+                        music, reading, or immersed in classic games like the Assassin's Creed trilogy
                         and Halo 3.
                       </p>
                     </div>
@@ -295,7 +295,7 @@ const About: React.FC = () => {
                     ))}
                   </div>
                 </div>
-                
+
                 {/* Active Interest Content */}
                 <div className="interest-content flex-grow-1">
                   <div className="row h-100 align-items-center">
@@ -306,20 +306,20 @@ const About: React.FC = () => {
                         <h3 className="showcase-title">{interests[activeInterest].title}</h3>
                       </div>
                     </div>
-                    
+
                     {/* Right Side - Details */}
                     <div className="col-md-8">
                       <div className="interest-details">
                         <p className="interest-description">
                           {interests[activeInterest].description}
                         </p>
-                        
+
                         <div className="interest-highlights">
                           <h5>Highlights:</h5>
                           <div className="highlights-grid">
                             {interests[activeInterest].details.map((detail: string, index: number) => (
-                              <div 
-                                key={detail} 
+                              <div
+                                key={detail}
                                 className="highlight-item"
                                 style={{
                                   animationDelay: `${index * 0.1}s`
@@ -331,9 +331,9 @@ const About: React.FC = () => {
                             ))}
                           </div>
                         </div>
-                        
+
                         {interests[activeInterest].link && (
-                          <a 
+                          <a
                             href={interests[activeInterest].link!.url}
                             className="external-link-btn mt-3"
                             target="_blank"
@@ -374,7 +374,7 @@ const About: React.FC = () => {
                     </div>
                   </div>
                 </div>
-                
+
                 {/* Selected Milestone Details */}
                 <div className="milestone-details flex-grow-1">
                   <div className="row h-100 align-items-center">
@@ -389,14 +389,14 @@ const About: React.FC = () => {
                         </p>
                       </div>
                     </div>
-                    
+
                     <div className="col-md-7">
                       <div className="milestone-achievements">
                         <h5 className="achievements-title">Key Achievements</h5>
                         <div className="achievements-grid">
                           {milestones[selectedMilestone].details.map((detail, index) => (
-                            <div 
-                              key={detail} 
+                            <div
+                              key={detail}
                               className="achievement-item"
                               style={{
                                 animationDelay: `${index * 0.1}s`

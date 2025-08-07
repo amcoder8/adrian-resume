@@ -14,10 +14,10 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     // Check localStorage or system preference on mount
     const savedTheme = localStorage.getItem('theme');
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    
+
     const shouldBeDark = savedTheme === 'dark' || (!savedTheme && prefersDark);
     setIsDark(shouldBeDark);
-    
+
     // Apply theme to document
     document.documentElement.setAttribute('data-theme', shouldBeDark ? 'dark' : 'light');
   }, []);

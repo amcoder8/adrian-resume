@@ -58,7 +58,7 @@ const Hero: React.FC<HeroProps> = ({ personalInfo, socialLinks }) => {
             </div>
           </div>
         }>
-          <Spline 
+          <Spline
             scene="https://prod.spline.design/OYX9VP8mn9SSpEP6/scene.splinecode"
             onError={handleSplineError}
             onLoad={handleSplineLoad}
@@ -77,10 +77,10 @@ const Hero: React.FC<HeroProps> = ({ personalInfo, socialLinks }) => {
 
       {/* Content Overlay */}
       <div className="hero-overlay"></div>
-      
+
       {/* Chicago Skyline Silhouette */}
       <div className="chicago-skyline"></div>
-      
+
       <div className="container-fluid container-custom">
         <div className="row align-items-center min-vh-100">
           <div className="col-12">
@@ -92,16 +92,16 @@ const Hero: React.FC<HeroProps> = ({ personalInfo, socialLinks }) => {
               <p className="lead hero-tagline mb-4">
                 {personalInfo.tagline}
               </p>
-              
+
               <div className="hero-buttons">
-                <button 
+                <button
                   className="btn btn-custom btn-primary"
                   onClick={handleDownloadResume}
                 >
                   <FaDownload />
                   Download Resume
                 </button>
-                <button 
+                <button
                   className="btn btn-custom btn-outline"
                   onClick={scrollToContact}
                 >
@@ -133,7 +133,7 @@ const Hero: React.FC<HeroProps> = ({ personalInfo, socialLinks }) => {
               {/* 3D Model Activation Button */}
               {isSplineLoaded && !isModelActivated && (
                 <div className="model-activation-button mt-4">
-                  <button 
+                  <button
                     className="btn btn-custom btn-outline"
                     onClick={handleModelActivation}
                   >
@@ -154,10 +154,10 @@ const Hero: React.FC<HeroProps> = ({ personalInfo, socialLinks }) => {
           </div>
         </div>
       </div>
-      
+
       {/* Scroll indicator */}
       <div className="scroll-indicator" style={{
-        transform: `scaleX(${typeof window !== 'undefined' ? 
+        transform: `scaleX(${typeof window !== 'undefined' ?
           Math.min(window.scrollY / (document.body.scrollHeight - window.innerHeight), 1) : 0})`
       }}></div>
     </section>

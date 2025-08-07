@@ -3,7 +3,7 @@ import { FaGithub, FaLinkedin, FaEnvelope, FaHeart } from 'react-icons/fa';
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
-  
+
   const socialLinks = [
     {
       platform: 'github',
@@ -35,7 +35,7 @@ const Footer: React.FC = () => {
               © {currentYear} Adrian. Made with <FaHeart className="text-danger" /> using Astro & React
             </p>
           </div>
-          
+
           <div className="col-md-6 text-center text-md-end">
             <div className="social-links">
               {socialLinks.map((link) => (
@@ -63,10 +63,10 @@ const Footer: React.FC = () => {
             </div>
           </div>
         </div>
-        
+
         <div className="row mt-3">
           <div className="col-12 text-center">
-            <button 
+            <button
               onClick={scrollToTop}
               className="btn btn-outline-light btn-sm"
               style={{ borderRadius: '20px' }}

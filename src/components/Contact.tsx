@@ -1,9 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { 
-  FaEnvelope, 
-  FaLinkedin, 
-  FaGithub, 
-  FaMapMarkerAlt, 
+import {
+  FaEnvelope,
+  FaLinkedin,
+  FaGithub,
+  FaMapMarkerAlt,
   FaPhone,
   FaPaperPlane,
   FaCheck,
@@ -34,6 +34,7 @@ const Contact: React.FC = () => {
     subject: '',
     message: ''
   });
+
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
@@ -142,29 +143,29 @@ const Contact: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!validateForm()) {
       return;
     }
 
     setIsSubmitting(true);
-    
+
     try {
       // Simulate API call
       await new Promise(resolve => setTimeout(resolve, 2000));
-      
+
       // For demo purposes, we'll always show success
       setSubmitStatus('success');
       setFormData({ name: '', email: '', subject: '', message: '' });
-      
+
       // Reset success message after 5 seconds
       setTimeout(() => {
         setSubmitStatus('idle');
       }, 5000);
-      
+
     } catch (error) {
       setSubmitStatus('error');
-      
+
       // Reset error message after 5 seconds
       setTimeout(() => {
         setSubmitStatus('idle');
@@ -188,7 +189,7 @@ const Contact: React.FC = () => {
     <section id="contact" ref={sectionRef} className="contact-section">
       <div className="container">
         <div className={`contact-content ${isVisible ? 'fade-in' : ''}`}>
-          
+
           {/* Section Header */}
           <div className="section-header text-center mb-5">
             <h2 className="section-title">Get In Touch</h2>
@@ -198,26 +199,26 @@ const Contact: React.FC = () => {
           </div>
 
           <div className="row align-items-start">
-            
+
             {/* Contact Information */}
             <div className="col-lg-5 mb-5 mb-lg-0" data-aos="fade-right">
               <div className="contact-info">
                 <div className="contact-intro mb-4">
                   <h4 className="contact-title">Let's Start a Conversation</h4>
                   <p className="contact-description">
-                    Whether you have a project in mind, need a consultation, or just want to say hello, 
-                    I'd love to hear from you. I'm always open to discussing new opportunities and 
+                    Whether you have a project in mind, need a consultation, or just want to say hello,
+                    I'd love to hear from you. I'm always open to discussing new opportunities and
                     exciting challenges.
                   </p>
                 </div>
 
                 <div className="contact-cards">
                   {contactInfo.map((info, index) => (
-                    <div 
-                      key={index} 
+                    <div
+                      key={index}
                       className="contact-card"
                       style={{ '--card-color': info.color } as React.CSSProperties}
-                      data-aos="fade-up" 
+                      data-aos="fade-up"
                       data-aos-delay={index * 100}
                     >
                       <div className="contact-icon" style={{ color: info.color }}>
@@ -226,8 +227,8 @@ const Contact: React.FC = () => {
                       <div className="contact-details">
                         <h6 className="contact-method">{info.title}</h6>
                         {info.link ? (
-                          <a 
-                            href={info.link} 
+                          <a
+                            href={info.link}
                             className="contact-value"
                             target={info.link.startsWith('http') ? '_blank' : '_self'}
                             rel={info.link.startsWith('http') ? 'noopener noreferrer' : undefined}
@@ -259,7 +260,7 @@ const Contact: React.FC = () => {
             <div className="col-lg-7" data-aos="fade-left">
               <div className="contact-form-container">
                 <form onSubmit={handleSubmit} className="contact-form">
-                  
+
                   {/* Form Header */}
                   <div className="form-header mb-4">
                     <h5 className="form-title">Send Me a Message</h5>
@@ -270,7 +271,7 @@ const Contact: React.FC = () => {
 
                   {/* Form Fields */}
                   <div className="row g-3">
-                    
+
                     {/* Name Field */}
                     <div className="col-md-6">
                       <div className="form-group">
@@ -382,7 +383,6 @@ const Contact: React.FC = () => {
                         </div>
                       </div>
                     </div>
-
                   </div>
 
                   {/* Submit Button */}
@@ -420,11 +420,9 @@ const Contact: React.FC = () => {
                       Something went wrong. Please try again or contact me directly.
                     </div>
                   )}
-
                 </form>
               </div>
             </div>
-
           </div>
 
           {/* Additional CTA */}
@@ -435,16 +433,16 @@ const Contact: React.FC = () => {
                 Feel free to reach out through any of the platforms below. I'm always happy to connect!
               </p>
               <div className="social-links-extended">
-                <a 
-                  href="mailto:adrian@example.com" 
+                <a
+                  href="mailto:adrian@example.com"
                   className="social-link"
                   style={{ '--link-color': '#EA4335' } as React.CSSProperties}
                 >
                   <FaEnvelope />
                   <span>Email</span>
                 </a>
-                <a 
-                  href="https://linkedin.com/in/adrian" 
+                <a
+                  href="https://linkedin.com/in/adrian"
                   className="social-link"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -453,8 +451,8 @@ const Contact: React.FC = () => {
                   <FaLinkedin />
                   <span>LinkedIn</span>
                 </a>
-                <a 
-                  href="https://github.com/adrian" 
+                <a
+                  href="https://github.com/adrian"
                   className="social-link"
                   target="_blank"
                   rel="noopener noreferrer"

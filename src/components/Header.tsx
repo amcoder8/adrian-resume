@@ -11,7 +11,7 @@ const Header: React.FC = () => {
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 100);
-      
+
       // Update active section based on scroll position
       const sections = ['home', 'about', 'skills', 'contact'];
       const current = sections.find(section => {
@@ -22,7 +22,7 @@ const Header: React.FC = () => {
         }
         return false;
       });
-      
+
       if (current) {
         setActiveSection(current);
       }
@@ -53,8 +53,8 @@ const Header: React.FC = () => {
       <nav className={`static-header ${isScrolled ? 'hidden' : 'visible'}`}>
         <div className="container">
           <div className="static-header-content">
-            <a 
-              className="brand-logo" 
+            <a
+              className="brand-logo"
               href="#home"
               onClick={(e) => {
                 e.preventDefault();
@@ -102,7 +102,7 @@ const Header: React.FC = () => {
       <nav className={`floating-header ${isScrolled ? 'visible' : 'hidden'}`}>
         <div className="floating-nav-container">
           {/* Brand */}
-          <button 
+          <button
             className="floating-brand"
             onClick={() => scrollToSection('#home')}
             aria-label="Go to home"

@@ -1,11 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { 
-  FaReact, 
-  FaJs, 
-  FaHtml5, 
-  FaCss3Alt, 
-  FaGitAlt, 
-  FaFigma, 
+import {
+  FaReact,
+  FaJs,
+  FaHtml5,
+  FaCss3Alt,
+  FaGitAlt,
+  FaFigma,
   FaNodeJs,
   FaBootstrap,
   FaCodeBranch,
@@ -17,12 +17,12 @@ import {
   FaChevronDown,
   FaChevronUp
 } from 'react-icons/fa';
-import { 
-  SiTypescript, 
-  SiVite, 
-  SiTailwindcss, 
-  SiSass, 
-  SiWebpack, 
+import {
+  SiTypescript,
+  SiVite,
+  SiTailwindcss,
+  SiSass,
+  SiWebpack,
   SiEslint,
   SiJest,
   SiStorybook,
@@ -304,8 +304,8 @@ const Skills: React.FC = () => {
     setIsExpanded(false); // Reset expanded state when category changes
   };
 
-  const filteredSkills = activeCategory === 'all' 
-    ? skills 
+  const filteredSkills = activeCategory === 'all'
+    ? skills
     : skills.filter(skill => skill.category === activeCategory);
 
   // Show only first 6 skills if not expanded
@@ -332,7 +332,7 @@ const Skills: React.FC = () => {
     <section id="skills" ref={sectionRef} className="skills-section">
       <div className="container">
         <div className={`skills-content ${isVisible ? 'fade-in' : ''}`}>
-          
+
           {/* Section Header */}
           <div className="section-header text-center mb-5">
             <h2 className="section-title">Technical Skills</h2>
@@ -414,7 +414,7 @@ const Skills: React.FC = () => {
               <div
                 key={skill.name}
                 className="skill-card"
-                style={{ 
+                style={{
                   '--skill-color': skill.color,
                   animationDelay: `${index * 0.1}s`
                 } as React.CSSProperties}
@@ -430,7 +430,7 @@ const Skills: React.FC = () => {
                     <span className="skill-experience">{skill.experience}</span>
                   </div>
                   <div className="skill-level-badge">
-                    <span 
+                    <span
                       className="level-text"
                       style={{ color: getSkillLevelColor(skill.level) }}
                     >
@@ -449,11 +449,11 @@ const Skills: React.FC = () => {
                     <span className="progress-value">{skill.level}%</span>
                   </div>
                   <div className="progress-bar">
-                    <div 
+                    <div
                       className="progress-fill"
-                      style={{ 
+                      style={{
                         width: hoveredSkill === skill.name ? `${skill.level}%` : '0%',
-                        backgroundColor: skill.color 
+                        backgroundColor: skill.color
                       }}
                     />
                   </div>
@@ -466,7 +466,7 @@ const Skills: React.FC = () => {
                       <div
                         key={dot}
                         className={`level-dot ${skill.level >= dot * 20 ? 'active' : ''}`}
-                        style={{ 
+                        style={{
                           backgroundColor: skill.level >= dot * 20 ? skill.color : 'transparent'
                         }}
                       />
@@ -488,8 +488,8 @@ const Skills: React.FC = () => {
                   {isExpanded ? <FaChevronUp /> : <FaChevronDown />}
                 </span>
                 <span className="expand-text">
-                  {isExpanded 
-                    ? 'Show Less Skills' 
+                  {isExpanded
+                    ? 'Show Less Skills'
                     : `Show All ${filteredSkills.length - 6} More Skills`
                   }
                 </span>
@@ -507,8 +507,8 @@ const Skills: React.FC = () => {
                 <div className="summary-content">
                   <h4 className="summary-title">Continuous Learning</h4>
                   <p className="summary-text">
-                    I believe in staying current with the latest web technologies and best practices. 
-                    My skill set continues to evolve as I take on new challenges and explore emerging 
+                    I believe in staying current with the latest web technologies and best practices.
+                    My skill set continues to evolve as I take on new challenges and explore emerging
                     technologies in the frontend development ecosystem.
                   </p>
                   <div className="summary-highlights">

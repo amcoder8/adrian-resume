@@ -2,6 +2,7 @@
 import Layout from '../components/Layout';
 ---
 
+<!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
@@ -14,6 +15,7 @@ import Layout from '../components/Layout';
 		<meta name="description" content="Adrian - Passionate Frontend Developer specializing in React, Astro, TypeScript, and modern web technologies. View my professional resume and portfolio." />
 		<meta name="keywords" content="frontend developer, react developer, astro, typescript, javascript, web developer, portfolio, resume" />
 		<meta name="author" content="Adrian" />
+		<meta name="robots" content="index, follow" />
 		
 		<!-- Open Graph / Facebook -->
 		<meta property="og:type" content="website" />
@@ -29,18 +31,37 @@ import Layout from '../components/Layout';
 		<meta property="twitter:description" content="Passionate Frontend Developer creating beautiful, functional web experiences with modern technologies." />
 		<meta property="twitter:image" content="/og-image.jpg" />
 		
-		<!-- Favicon -->
-		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-		<link rel="manifest" href="/site.webmanifest" />
+		<!-- Additional SEO -->
+		<meta name="theme-color" content="#E41E20" />
+		<link rel="canonical" href="https://adrian-resume.netlify.app/" />
 		
-		<!-- Preconnect to external domains -->
+		<!-- Preconnect to external domains for performance -->
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		
-		<!-- Google Fonts -->
-		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+		<!-- Schema.org structured data -->
+		<script type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@type": "Person",
+			"name": "Adrian",
+			"jobTitle": "Frontend Developer",
+			"description": "Passionate Frontend Developer creating beautiful, functional web experiences with modern technologies.",
+			"url": "https://adrian-resume.netlify.app/",
+			"sameAs": [
+				"https://github.com/adrian",
+				"https://linkedin.com/in/adrian"
+			],
+			"knowsAbout": [
+				"React",
+				"Astro",
+				"TypeScript",
+				"JavaScript",
+				"Frontend Development",
+				"Web Development"
+			]
+		}
+		</script>
 	</head>
 	<body>
 		<Layout client:load />
