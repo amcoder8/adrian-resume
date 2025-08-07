@@ -78,6 +78,9 @@ const Hero: React.FC<HeroProps> = ({ personalInfo, socialLinks }) => {
       {/* Content Overlay */}
       <div className="hero-overlay"></div>
       
+      {/* Chicago Skyline Silhouette */}
+      <div className="chicago-skyline"></div>
+      
       <div className="container-fluid container-custom">
         <div className="row align-items-center min-vh-100">
           <div className="col-12">

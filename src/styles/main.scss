@@ -7,34 +7,46 @@
 // AOS animations
 @import "aos/dist/aos.css";
 
-// CSS Custom Properties for theming
+// Component styles
+@import "about-section.scss";
+
+// CSS Custom Properties for theming - Albanian Heritage & Chicago Roots
 :root {
-  // Light theme colors
-  --primary-color: #2563eb;
+  // Albanian Flag Inspired Color Scheme
+  --albanian-red: #E41E20;
+  --pure-black: #000000;
+  --clean-white: #FFFFFF;
+  --dark-charcoal: #2D2D2D;
+  --light-grey: #F8F9FA;
+  --very-dark-grey: #1A1A1A;
+  
+  // Light theme colors (Clean & Professional)
+  --primary-color: #E41E20;    // Albanian red for CTAs and highlights
   --secondary-color: #64748b;
-  --accent-color: #0ea5e9;
-  --background-color: #ffffff;
-  --surface-color: #f8fafc;
-  --text-primary: #1e293b;
+  --accent-color: #E41E20;     // Albanian red for accents
+  --background-color: #FFFFFF; // Clean white background
+  --surface-color: #F8F9FA;    // Light grey for cards
+  --text-primary: #2D2D2D;     // Dark charcoal for readability
   --text-secondary: #64748b;
   --text-muted: #94a3b8;
-  --border-color: #e2e8f0;
-  --shadow-color: rgba(0, 0, 0, 0.1);
+  --border-color: #E41E20;     // Red accent borders
+  --shadow-color: rgba(228, 30, 32, 0.1); // Subtle red shadow
   
   // Floating header variables
-  --primary: #2563eb;
+  --primary: #E41E20;
   --secondary: #64748b;
-  --accent: #0ea5e9;
-  --bg: #ffffff;
-  --text: #1e293b;
-  --primary-rgb: 37, 99, 235;
-  --text-rgb: 30, 41, 59;
+  --accent: #E41E20;
+  --bg: #FFFFFF;
+  --text: #2D2D2D;
+  --primary-rgb: 228, 30, 32;
+  --text-rgb: 45, 45, 45;
   --bg-rgb: 255, 255, 255;
   
-  // Gradients
-  --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-  --gradient-tech: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  // Albanian Heritage Gradients
+  --gradient-primary: linear-gradient(135deg, #E41E20 0%, #2D2D2D 100%);
+  --gradient-secondary: linear-gradient(135deg, #E41E20 0%, #000000 100%);
+  --gradient-tech: linear-gradient(135deg, #E41E20 0%, #2D2D2D 100%);
+  --gradient-hero: linear-gradient(135deg, rgba(228, 30, 32, 0.1) 0%, rgba(45, 45, 45, 0.05) 100%);
   
   // Spacing
   --section-padding: 5rem 0;
@@ -45,28 +57,28 @@
   --transition-slow: all 0.5s ease;
 }
 
-// Dark theme
+// Dark theme - Albanian Heritage Night Mode
 [data-theme="dark"] {
-  --primary-color: #3b82f6;
+  --primary-color: #E41E20;        // Bright Albanian red
   --secondary-color: #94a3b8;
-  --accent-color: #06b6d4;
-  --background-color: #0f172a;
-  --surface-color: #1e293b;
-  --text-primary: #f1f5f9;
+  --accent-color: #E41E20;         // Albanian red for accents
+  --background-color: #000000;     // Pure black background
+  --surface-color: #2D2D2D;        // Dark charcoal for cards/sections
+  --text-primary: #FFFFFF;         // Clean white text
   --text-secondary: #cbd5e1;
   --text-muted: #64748b;
-  --border-color: #334155;
-  --shadow-color: rgba(0, 0, 0, 0.3);
+  --border-color: #E41E20;         // Red accent borders
+  --shadow-color: rgba(228, 30, 32, 0.3); // Red glow effects
   
   // Floating header dark theme
-  --primary: #3b82f6;
+  --primary: #E41E20;
   --secondary: #94a3b8;
-  --accent: #06b6d4;
-  --bg: #0f172a;
-  --text: #f1f5f9;
-  --primary-rgb: 59, 130, 246;
-  --text-rgb: 241, 245, 249;
-  --bg-rgb: 15, 23, 42;
+  --accent: #E41E20;
+  --bg: #000000;
+  --text: #FFFFFF;
+  --primary-rgb: 228, 30, 32;
+  --text-rgb: 255, 255, 255;
+  --bg-rgb: 0, 0, 0;
 }
 
 // Base styles
@@ -110,6 +122,116 @@ h3 {
   font-size: clamp(1.5rem, 3vw, 2rem);
 }
 
+// Albanian Heritage Design Elements
+.albanian-heritage {
+  position: relative;
+  border-left: 4px solid var(--albanian-red);
+  background: linear-gradient(135deg, rgba(228, 30, 32, 0.05) 0%, rgba(45, 45, 45, 0.02) 100%);
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    width: 20px;
+    height: 15px;
+    background: linear-gradient(45deg, 
+      transparent 40%, 
+      var(--albanian-red) 40%, 
+      var(--albanian-red) 60%, 
+      transparent 60%);
+    opacity: 0.3;
+  }
+}
+
+// Albanian Eagle Silhouette Pattern (Very Subtle)
+.albanian-pattern {
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      radial-gradient(circle at 20% 80%, rgba(228, 30, 32, 0.02) 1px, transparent 1px),
+      radial-gradient(circle at 80% 20%, rgba(228, 30, 32, 0.02) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+    z-index: 0;
+  }
+}
+
+// Chicago Skyline Elements
+.chicago-accent {
+  position: relative;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, 
+      transparent 0%, 
+      var(--albanian-red) 20%, 
+      var(--albanian-red) 80%, 
+      transparent 100%);
+  }
+}
+
+// Red Accent Lines for Section Separation
+.section-divider {
+  position: relative;
+  margin: 4rem 0;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100px;
+    height: 2px;
+    background: var(--albanian-red);
+  }
+  
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    background: var(--albanian-red);
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  }
+}
+
+// Geometric Albanian Textile Patterns (Modernized)
+.geometric-pattern {
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background-image: 
+      linear-gradient(45deg, transparent 25%, rgba(228, 30, 32, 0.03) 25%, rgba(228, 30, 32, 0.03) 50%, transparent 50%),
+      linear-gradient(-45deg, transparent 25%, rgba(228, 30, 32, 0.03) 25%, rgba(228, 30, 32, 0.03) 50%, transparent 50%);
+    background-size: 20px 20px;
+    pointer-events: none;
+    z-index: -1;
+  }
+}
+
 p {
   margin-bottom: 1rem;
   color: var(--text-secondary);
@@ -149,7 +271,7 @@ code, pre {
   padding: 0 1rem;
 }
 
-// Buttons
+// Buttons - Albanian Heritage Style
 .btn-custom {
   display: inline-flex;
   align-items: center;
@@ -181,28 +303,40 @@ code, pre {
 }
 
 .btn-primary {
-  background: var(--gradient-primary);
+  background: var(--albanian-red);
+  background: linear-gradient(135deg, var(--albanian-red) 0%, #C01E20 100%);
   color: white;
+  border: 2px solid var(--albanian-red);
   
   &:hover {
+    background: linear-gradient(135deg, #C01E20 0%, var(--albanian-red) 100%);
     transform: translateY(-2px);
-    box-shadow: 0 10px 30px var(--shadow-color);
+    box-shadow: 0 10px 30px rgba(228, 30, 32, 0.3);
+  }
+  
+  &:focus {
+    box-shadow: 0 0 0 3px rgba(228, 30, 32, 0.25);
   }
 }
 
 .btn-outline {
   background: transparent;
-  color: var(--primary-color);
-  border: 2px solid var(--primary-color);
+  color: var(--albanian-red);
+  border: 2px solid var(--albanian-red);
   
   &:hover {
-    background: var(--primary-color);
+    background: var(--albanian-red);
     color: white;
     transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(228, 30, 32, 0.3);
+  }
+  
+  &:focus {
+    box-shadow: 0 0 0 3px rgba(228, 30, 32, 0.25);
   }
 }
 
-// Cards
+// Cards with Albanian Heritage Elements
 .card-custom {
   background: var(--surface-color);
   border: 1px solid var(--border-color);
@@ -212,6 +346,7 @@ code, pre {
   position: relative;
   overflow: hidden;
   
+  // Albanian red accent line
   &::before {
     content: '';
     position: absolute;
@@ -224,12 +359,57 @@ code, pre {
     transition: var(--transition-base);
   }
   
+  // Subtle geometric pattern overlay
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 80px;
+    height: 80px;
+    background: 
+      repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 2px,
+        rgba(228, 30, 32, 0.02) 2px,
+        rgba(228, 30, 32, 0.02) 4px
+      );
+    pointer-events: none;
+    opacity: 0;
+    transition: var(--transition-base);
+  }
+  
   &:hover {
     transform: translateY(-5px);
     box-shadow: 0 20px 40px var(--shadow-color);
     
     &::before {
       transform: scaleX(1);
+    }
+    
+    &::after {
+      opacity: 1;
+    }
+  }
+  
+  // Heritage variant with stronger patterns
+  &.heritage-card {
+    &::after {
+      background: 
+        radial-gradient(circle at 80% 20%, rgba(228, 30, 32, 0.05) 0%, transparent 50%),
+        repeating-linear-gradient(
+          45deg,
+          transparent,
+          transparent 3px,
+          rgba(228, 30, 32, 0.03) 3px,
+          rgba(228, 30, 32, 0.03) 6px
+        );
+      opacity: 0.6;
+    }
+    
+    &:hover::after {
+      opacity: 1;
     }
   }
 }
@@ -314,7 +494,7 @@ code, pre {
   }
 }
 
-// Hero section
+// Hero section - Albanian Heritage & Chicago Style
 .hero {
   min-height: 100vh;
   display: flex;
@@ -322,13 +502,44 @@ code, pre {
   position: relative;
   overflow: hidden;
   
-  // Light mode - dark silver background
-  background: linear-gradient(135deg, #4a5568 0%, #2d3748 50%, #1a202c 100%);
+  // Light mode - Albanian red gradient with Chicago skyline inspiration
+  background: linear-gradient(135deg, 
+    var(--dark-charcoal) 0%, 
+    #1a1a1a 30%, 
+    var(--pure-black) 70%, 
+    var(--dark-charcoal) 100%
+  );
   color: white;
   
-  // Dark mode - black background
+  // Add Albanian heritage pattern overlay
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      radial-gradient(circle at 20% 80%, rgba(228, 30, 32, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(228, 30, 32, 0.1) 0%, transparent 50%),
+      linear-gradient(135deg, rgba(228, 30, 32, 0.05) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 2;
+  }
+  
+  // Dark mode - pure black with red accents
   [data-theme="dark"] & {
-    background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #000000 100%);
+    background: linear-gradient(135deg, 
+      var(--pure-black) 0%, 
+      var(--very-dark-grey) 50%, 
+      var(--pure-black) 100%
+    );
+    
+    &::before {
+      background: 
+        radial-gradient(circle at 20% 80%, rgba(228, 30, 32, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(228, 30, 32, 0.15) 0%, transparent 50%);
+    }
   }
   
   // Background 3D Model
@@ -424,7 +635,7 @@ code, pre {
     }
   }
   
-  // Content overlay for better readability
+  // Content overlay for better readability with Albanian heritage elements
   .hero-overlay {
     position: absolute;
     top: 0;
@@ -438,7 +649,20 @@ code, pre {
       rgba(0, 0, 0, 0.4) 100%
     );
     z-index: 2;
-    pointer-events: none; // Allow mouse events to pass through to the 3D model
+    pointer-events: none;
+    
+    // Albanian eagle silhouette overlay (subtle)
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 300px;
+      height: 200px;
+      background: radial-gradient(ellipse, rgba(228, 30, 32, 0.03) 0%, transparent 70%);
+      pointer-events: none;
+    }
     
     [data-theme="dark"] & {
       background: linear-gradient(
@@ -446,6 +670,42 @@ code, pre {
         rgba(0, 0, 0, 0.6) 0%,
         rgba(0, 0, 0, 0.3) 50%,
         rgba(0, 0, 0, 0.6) 100%
+      );
+      
+      &::after {
+        background: radial-gradient(ellipse, rgba(228, 30, 32, 0.05) 0%, transparent 70%);
+      }
+    }
+  }
+  
+  // Chicago skyline silhouette
+  .chicago-skyline {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 120px;
+    background: linear-gradient(to top, rgba(228, 30, 32, 0.1) 0%, transparent 100%);
+    z-index: 2;
+    pointer-events: none;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 80px;
+      background: 
+        linear-gradient(90deg, transparent 10%, rgba(228, 30, 32, 0.05) 15%, transparent 20%),
+        linear-gradient(90deg, transparent 25%, rgba(228, 30, 32, 0.08) 30%, transparent 35%),
+        linear-gradient(90deg, transparent 45%, rgba(228, 30, 32, 0.06) 50%, transparent 55%),
+        linear-gradient(90deg, transparent 70%, rgba(228, 30, 32, 0.07) 75%, transparent 80%);
+      clip-path: polygon(
+        0% 100%, 5% 60%, 10% 40%, 15% 80%, 20% 30%, 25% 50%, 
+        30% 20%, 35% 70%, 40% 35%, 45% 90%, 50% 25%, 55% 45%, 
+        60% 15%, 65% 55%, 70% 40%, 75% 85%, 80% 30%, 85% 60%, 
+        90% 45%, 95% 75%, 100% 100%
       );
     }
   }
@@ -485,13 +745,13 @@ code, pre {
     font-weight: 700;
     
     .text-accent {
-      background: linear-gradient(45deg, #667eea, #764ba2);
+      background: linear-gradient(45deg, #ffffff, #e5e7eb);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
       
       [data-theme="dark"] & {
-        background: linear-gradient(45deg, #9f7aea, #667eea);
+        background: linear-gradient(45deg, #ffffff, #d1d5db);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
@@ -524,33 +784,35 @@ code, pre {
     margin-bottom: 2rem;
   }
   
-  // Enhanced button styles for the new background
+  // Enhanced button styles for Albanian heritage theme
   .btn-custom {
     backdrop-filter: blur(10px);
     border: 2px solid rgba(255, 255, 255, 0.2);
     transition: all 0.3s ease;
     
     &.btn-primary {
-      background: linear-gradient(45deg, rgba(102, 126, 234, 0.8), rgba(118, 75, 162, 0.8));
+      background: linear-gradient(45deg, var(--albanian-red), #c0392b);
       color: white;
+      border-color: var(--albanian-red);
       
       &:hover {
-        background: linear-gradient(45deg, rgba(102, 126, 234, 1), rgba(118, 75, 162, 1));
+        background: linear-gradient(45deg, #c0392b, var(--albanian-red));
         transform: translateY(-3px);
-        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 15px 35px rgba(228, 30, 32, 0.4);
+        border-color: #c0392b;
       }
     }
     
     &.btn-outline {
-      background: rgba(255, 255, 255, 0.1);
+      background: rgba(228, 30, 32, 0.1);
       color: white;
-      border-color: rgba(255, 255, 255, 0.3);
+      border-color: var(--albanian-red);
       
       &:hover {
-        background: rgba(255, 255, 255, 0.2);
-        border-color: rgba(255, 255, 255, 0.5);
+        background: var(--albanian-red);
+        border-color: var(--albanian-red);
         transform: translateY(-3px);
-        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 15px 35px rgba(228, 30, 32, 0.3);
       }
     }
   }
@@ -1541,7 +1803,7 @@ code, pre {
     }
   }
 
-  // Skills Grid
+  // Skills Grid - Albanian Heritage Style
   .skills-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -1567,7 +1829,7 @@ code, pre {
         left: 0;
         right: 0;
         height: 3px;
-        background: var(--skill-color, var(--primary-color));
+        background: var(--albanian-red);
         transform: scaleX(0);
         transform-origin: left;
         transition: transform 0.3s ease;
@@ -1575,8 +1837,8 @@ code, pre {
       
       &:hover {
         transform: translateY(-8px);
-        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
-        border-color: var(--skill-color, var(--primary-color));
+        box-shadow: 0 25px 50px rgba(228, 30, 32, 0.15);
+        border-color: var(--albanian-red);
         
         &::before {
           transform: scaleX(1);
@@ -1675,6 +1937,7 @@ code, pre {
           
           .progress-fill {
             height: 100%;
+            background: linear-gradient(90deg, var(--albanian-red), #C01E20);
             transition: width 1s ease;
             border-radius: 3px;
             position: relative;
@@ -1703,11 +1966,12 @@ code, pre {
             width: 8px;
             height: 8px;
             border-radius: 50%;
-            border: 2px solid var(--skill-color, var(--primary-color));
+            border: 2px solid var(--albanian-red);
             transition: all 0.3s ease;
             
             &.active {
-              box-shadow: 0 0 10px var(--skill-color, var(--primary-color));
+              background: var(--albanian-red);
+              box-shadow: 0 0 10px rgba(228, 30, 32, 0.5);
             }
           }
         }
@@ -2534,6 +2798,286 @@ code, pre {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+// Enhanced About Section Styles
+.about-section {
+  
+  // Flip Cards Grid
+  .flip-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+    
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+  }
+  
+  // Flip Card Component
+  .flip-card {
+    background: transparent;
+    perspective: 1000px;
+    height: 220px;
+    cursor: pointer;
+    border-radius: 1rem;
+    
+    &:focus {
+      outline: 3px solid var(--albanian-red);
+      outline-offset: 2px;
+    }
+    
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      transition: transform 0.6s cubic-bezier(0.4, 0.0, 0.2, 1);
+      transform-style: preserve-3d;
+    }
+    
+    &.flipped .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+    
+    .flip-card-front,
+    .flip-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      border-radius: 1rem;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border: 2px solid var(--border-color);
+      transition: all 0.3s ease;
+      
+      // Albanian geometric pattern overlay
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 60px;
+        height: 60px;
+        background: 
+          repeating-linear-gradient(
+            45deg,
+            transparent,
+            transparent 3px,
+            rgba(228, 30, 32, 0.05) 3px,
+            rgba(228, 30, 32, 0.05) 6px
+          );
+        border-radius: 0 1rem 0 0;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+    }
+    
+    .flip-card-front {
+      background: var(--surface-color);
+      color: var(--text-primary);
+      
+      .card-icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        transition: all 0.3s ease;
+      }
+      
+      .card-title {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        color: var(--text-primary);
+      }
+      
+      .flip-indicator {
+        margin-top: auto;
+        opacity: 0.7;
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+      }
+    }
+    
+    .flip-card-back {
+      background: var(--albanian-red);
+      color: white;
+      transform: rotateY(180deg);
+      
+      .card-content {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        
+        .card-description {
+          font-size: 1rem;
+          line-height: 1.6;
+          text-align: center;
+          margin-bottom: 0;
+        }
+        
+        .btn {
+          margin-top: 1rem;
+          background: rgba(255, 255, 255, 0.2);
+          border-color: rgba(255, 255, 255, 0.3);
+          color: white;
+          
+          &:hover {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-2px);
+          }
+        }
+      }
+      
+      .flip-indicator {
+        margin-top: auto;
+        opacity: 0.8;
+        font-size: 0.85rem;
+      }
+    }
+    
+    // Hover effects
+    &:hover {
+      .flip-card-front,
+      .flip-card-back {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px rgba(228, 30, 32, 0.15);
+        
+        &::before {
+          opacity: 1;
+        }
+      }
+      
+      .flip-card-front .card-icon {
+        transform: scale(1.1);
+        color: var(--albanian-red);
+      }
+    }
+    
+    // Dark theme adjustments
+    [data-theme="dark"] & {
+      .flip-card-front {
+        background: var(--dark-charcoal);
+        color: var(--clean-white);
+        border-color: var(--albanian-red);
+        
+        .card-title {
+          color: var(--clean-white);
+        }
+        
+        &::before {
+          background: 
+            repeating-linear-gradient(
+              45deg,
+              transparent,
+              transparent 3px,
+              rgba(228, 30, 32, 0.1) 3px,
+              rgba(228, 30, 32, 0.1) 6px
+            );
+        }
+      }
+      
+      &:hover .flip-card-front,
+      &:hover .flip-card-back {
+        box-shadow: 0 20px 40px rgba(228, 30, 32, 0.3);
+      }
+    }
+  }
+  
+  // Enhanced tab content styling
+  .tab-pane {
+    min-height: 300px;
+    
+    .about-text {
+      .highlight-box {
+        background: linear-gradient(135deg, rgba(228, 30, 32, 0.05), rgba(45, 45, 45, 0.02));
+        border-left: 4px solid var(--albanian-red);
+        padding: 2rem;
+        border-radius: 0.5rem;
+        margin-top: 2rem;
+        
+        h3 {
+          color: var(--albanian-red);
+          font-size: 1.25rem;
+          margin-bottom: 1rem;
+        }
+        
+        [data-theme="dark"] & {
+          background: linear-gradient(135deg, rgba(228, 30, 32, 0.1), rgba(255, 255, 255, 0.02));
+        }
+      }
+    }
+  }
+  
+  // Enhanced timeline styling
+  .timeline {
+    .timeline-item {
+      .timeline-content {
+        h4 {
+          color: var(--text-primary);
+          font-size: 1.25rem;
+          margin-bottom: 0.75rem;
+        }
+      }
+    }
+  }
+  
+  // Responsive adjustments
+  @media (max-width: 768px) {
+    .flip-cards-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .flip-card {
+      height: 200px;
+      
+      .flip-card-front,
+      .flip-card-back {
+        padding: 1.5rem;
+      }
+      
+      .flip-card-front {
+        .card-icon {
+          font-size: 2.5rem;
+        }
+        
+        .card-title {
+          font-size: 1.25rem;
+        }
+      }
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .flip-card {
+      height: 180px;
+      
+      .flip-card-front,
+      .flip-card-back {
+        padding: 1rem;
+      }
+      
+      .flip-card-back .card-content .card-description {
+        font-size: 0.9rem;
+      }
+    }
+  }
+}
+
+// Enhanced animations
+@keyframes flipCardHover {
+  0% { transform: translateY(0) rotateX(0); }
+  50% { transform: translateY(-5px) rotateX(5deg); }
+  100% { transform: translateY(-5px) rotateX(0); }
 }
 
 // Import floating header styles
