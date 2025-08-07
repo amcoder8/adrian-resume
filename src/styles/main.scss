@@ -2402,6 +2402,18 @@ code, pre {
     linear-gradient(135deg, rgba(102, 126, 234, 0.03) 0%, rgba(118, 75, 162, 0.03) 100%),
     var(--bg-color);
   
+  // Dark theme - same gradient as tech skills section
+  [data-theme="dark"] & {
+    background: linear-gradient(135deg, 
+      #000000 0%,     // Pure black start
+      #1a1a1a 25%,    // Dark charcoal
+      #2d2d2d 50%,    // Medium dark grey
+      #1a1a1a 75%,    // Back to dark charcoal
+      #000000 100%    // End with pure black
+    );
+    color: white;
+  }
+  
   .section-header {
     margin-bottom: 4rem;
     
@@ -2455,8 +2467,8 @@ code, pre {
         background: var(--card-bg);
         border: 1px solid var(--border-color);
         border-radius: 12px;
-        padding: 1.5rem;
-        margin-bottom: 1rem;
+        padding: 1.25rem;
+        margin-bottom: 0.75rem;
         backdrop-filter: blur(10px);
         transition: all 0.3s ease;
         position: relative;
@@ -2476,8 +2488,8 @@ code, pre {
         }
         
         &:hover {
-          transform: translateY(-3px);
-          box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+          transform: translateY(-2px);
+          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
           border-color: var(--card-color, var(--primary-color));
           
           &::before {
@@ -2490,15 +2502,15 @@ code, pre {
         }
         
         .contact-icon {
-          width: 50px;
-          height: 50px;
+          width: 45px;
+          height: 45px;
           background: rgba(var(--primary-rgb), 0.1);
           border-radius: 50%;
           display: flex;
           align-items: center;
           justify-content: center;
-          font-size: 1.25rem;
-          margin-bottom: 1rem;
+          font-size: 1.1rem;
+          margin-bottom: 0.75rem;
           transition: transform 0.3s ease;
         }
         
@@ -2506,14 +2518,14 @@ code, pre {
           .contact-method {
             font-weight: 600;
             color: var(--text-color);
-            margin-bottom: 0.5rem;
-            font-size: 1rem;
+            margin-bottom: 0.4rem;
+            font-size: 0.95rem;
           }
           
           .contact-value {
             color: var(--text-muted);
             text-decoration: none;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             transition: color 0.3s ease;
             
             &:hover {
@@ -2529,19 +2541,19 @@ code, pre {
       background: var(--card-bg);
       border: 1px solid var(--border-color);
       border-radius: 12px;
-      padding: 1.5rem;
+      padding: 1.25rem;
       backdrop-filter: blur(10px);
-      margin-top: 2rem;
+      margin-top: 1.5rem;
       
       .status-indicator {
         display: flex;
         align-items: center;
         gap: 0.75rem;
-        margin-bottom: 0.75rem;
+        margin-bottom: 0.6rem;
         
         .status-dot {
-          width: 12px;
-          height: 12px;
+          width: 10px;
+          height: 10px;
           background: #10B981;
           border-radius: 50%;
           position: relative;
@@ -2563,15 +2575,15 @@ code, pre {
         .status-text {
           font-weight: 600;
           color: var(--text-color);
-          font-size: 0.95rem;
+          font-size: 0.9rem;
         }
       }
       
       .status-description {
         color: var(--text-muted);
-        font-size: 0.9rem;
+        font-size: 0.85rem;
         margin: 0;
-        line-height: 1.5;
+        line-height: 1.4;
       }
     }
   }
@@ -2737,88 +2749,6 @@ code, pre {
         background: rgba(239, 68, 68, 0.1);
         color: #EF4444;
         border: 1px solid rgba(239, 68, 68, 0.2);
-      }
-    }
-  }
-
-  // Contact CTA
-  .contact-cta {
-    .cta-content {
-      background: var(--card-bg);
-      border: 1px solid var(--border-color);
-      border-radius: 20px;
-      padding: 3rem 2rem;
-      backdrop-filter: blur(10px);
-      position: relative;
-      overflow: hidden;
-      
-      &::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 4px;
-        background: var(--gradient-primary);
-      }
-      
-      .cta-title {
-        font-size: 1.5rem;
-        font-weight: 700;
-        color: var(--text-color);
-        margin-bottom: 1rem;
-      }
-      
-      .cta-description {
-        color: var(--text-muted);
-        font-size: 1rem;
-        margin-bottom: 2rem;
-        max-width: 500px;
-        margin-left: auto;
-        margin-right: auto;
-      }
-      
-      .social-links-extended {
-        display: flex;
-        justify-content: center;
-        gap: 1.5rem;
-        flex-wrap: wrap;
-        
-        .social-link {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 0.5rem;
-          padding: 1.5rem 1rem;
-          background: var(--bg-color);
-          border: 1px solid var(--border-color);
-          border-radius: 12px;
-          text-decoration: none;
-          color: var(--text-muted);
-          transition: all 0.3s ease;
-          min-width: 100px;
-          
-          &:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-            border-color: var(--link-color, var(--primary-color));
-            color: var(--link-color, var(--primary-color));
-          }
-          
-          svg {
-            font-size: 1.5rem;
-            transition: transform 0.3s ease;
-          }
-          
-          span {
-            font-size: 0.85rem;
-            font-weight: 500;
-          }
-          
-          &:hover svg {
-            transform: scale(1.1);
-          }
-        }
       }
     }
   }

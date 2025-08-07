@@ -425,46 +425,6 @@ const Contact: React.FC = () => {
             </div>
           </div>
 
-          {/* Additional CTA */}
-          <div className="contact-cta text-center mt-5" data-aos="fade-up" data-aos-delay="600">
-            <div className="cta-content">
-              <h5 className="cta-title">Prefer a different way to connect?</h5>
-              <p className="cta-description">
-                Feel free to reach out through any of the platforms below. I'm always happy to connect!
-              </p>
-              <div className="social-links-extended">
-                <a
-                  href="mailto:adrian@example.com"
-                  className="social-link"
-                  style={{ '--link-color': '#EA4335' } as React.CSSProperties}
-                >
-                  <FaEnvelope />
-                  <span>Email</span>
-                </a>
-                <a
-                  href="https://linkedin.com/in/adrian"
-                  className="social-link"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{ '--link-color': '#0077B5' } as React.CSSProperties}
-                >
-                  <FaLinkedin />
-                  <span>LinkedIn</span>
-                </a>
-                <a
-                  href="https://github.com/adrian"
-                  className="social-link"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{ '--link-color': '#333333' } as React.CSSProperties}
-                >
-                  <FaGithub />
-                  <span>GitHub</span>
-                </a>
-              </div>
-            </div>
-          </div>
-
         </div>
       </div>
     </section>
