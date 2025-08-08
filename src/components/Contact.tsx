@@ -10,8 +10,10 @@ import {
   FaTimes,
   FaUser,
   FaComments,
-  FaSpinner
+  FaSpinner,
+  FaInstagram
 } from 'react-icons/fa';
+import { SiTiktok } from 'react-icons/si';
 
 interface FormData {
   name: string;
@@ -58,28 +60,45 @@ const Contact: React.FC = () => {
     return () => observer.disconnect();
   }, []);
 
-  const contactInfo = [
+  const socialLinks = [
     {
       icon: <FaEnvelope />,
       title: 'Email',
-      value: 'adrian@example.com',
+      tooltip: 'Send me an email',
       link: 'mailto:adrian@example.com',
       color: '#EA4335'
     },
     {
       icon: <FaLinkedin />,
       title: 'LinkedIn',
-      value: 'Connect with me',
+      tooltip: 'Connect with me on LinkedIn',
       link: 'https://linkedin.com/in/adrian',
       color: '#0077B5'
     },
     {
       icon: <FaGithub />,
       title: 'GitHub',
-      value: 'View my projects',
+      tooltip: 'View my projects on GitHub',
       link: 'https://github.com/adrian',
       color: '#333333'
     },
+    {
+      icon: <FaInstagram />,
+      title: 'Instagram',
+      tooltip: 'Follow me on Instagram',
+      link: 'https://instagram.com/adrian',
+      color: '#E4405F'
+    },
+    {
+      icon: <SiTiktok />,
+      title: 'TikTok',
+      tooltip: 'Watch my content on TikTok',
+      link: 'https://tiktok.com/@adrian',
+      color: '#000000'
+    }
+  ];
+
+  const contactInfo = [
     {
       icon: <FaMapMarkerAlt />,
       title: 'Location',
@@ -212,6 +231,30 @@ const Contact: React.FC = () => {
                   </p>
                 </div>
 
+                {/* Social Icons */}
+                <div className="social-icons-section mb-4">
+                  <h5 className="social-title">Connect With Me</h5>
+                  <div className="social-icons-horizontal">
+                    {socialLinks.map((social, index) => (
+                      <div key={index} className="social-icon-wrapper">
+                        <a
+                          href={social.link}
+                          className="social-icon-link"
+                          style={{ '--social-color': social.color } as React.CSSProperties}
+                          target={social.link.startsWith('http') ? '_blank' : '_self'}
+                          rel={social.link.startsWith('http') ? 'noopener noreferrer' : undefined}
+                          data-tooltip={social.tooltip}
+                          data-aos="zoom-in"
+                          data-aos-delay={index * 100}
+                        >
+                          {social.icon}
+                        </a>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Location Info */}
                 <div className="contact-cards">
                   {contactInfo.map((info, index) => (
                     <div

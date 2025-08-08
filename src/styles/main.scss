@@ -28,7 +28,7 @@
   --surface-color: #F8F9FA;     // Light grey for cards
   --text-primary: #1a1a1a;      // Much darker charcoal for maximum readability
   --text-secondary: #4a5568;    // Darker secondary text for better contrast
-  --text-muted: #6b7280;        // Improved muted text contrast
+  --text-muted: #4a5568;        // Darker muted text for better readability
   --border-color: #E41E20;      // Red accent borders
   --shadow-color: rgba(228, 30, 32, 0.1); // Subtle red shadow
   
@@ -2399,19 +2399,52 @@ code, pre {
   position: relative;
   padding: 6rem 0;
   background: 
-    linear-gradient(135deg, rgba(102, 126, 234, 0.03) 0%, rgba(118, 75, 162, 0.03) 100%),
+    linear-gradient(135deg, rgba(102, 126, 234, 0.03) 0%, rgb(236, 75, 75) 100%),
     var(--bg-color);
   
-  // Dark theme - same gradient as tech skills section
+  // Dark theme - unique contact pattern with dot matrix overlay
   [data-theme="dark"] & {
-    background: linear-gradient(135deg, 
-      #000000 0%,     // Pure black start
-      #1a1a1a 25%,    // Dark charcoal
-      #2d2d2d 50%,    // Medium dark grey
-      #1a1a1a 75%,    // Back to dark charcoal
-      #000000 100%    // End with pure black
-    );
+    background: 
+      // Dot matrix pattern overlay
+      radial-gradient(circle at 2px 2px, rgba(228, 30, 32, 0.15) 1px, transparent 0),
+      radial-gradient(circle at 25px 25px, rgba(255, 255, 255, 0.05) 1px, transparent 0),
+      // Diagonal lines pattern
+      linear-gradient(45deg, transparent 25%, rgba(228, 30, 32, 0.05) 25%, rgba(228, 30, 32, 0.05) 50%, transparent 50%, transparent 75%, rgba(228, 30, 32, 0.05) 75%),
+      // Base gradient (different from skills section)
+      linear-gradient(135deg, 
+        #0a0a0a 0%,     // Deeper black
+        #1a1a1a 20%,    // Dark charcoal
+        #0f0f0f 40%,    // Very dark grey
+        #1a1a1a 60%,    // Back to charcoal
+        #0a0a0a 80%,    // Deep black
+        #000000 100%    // Pure black
+      );
+    background-size: 40px 40px, 50px 50px, 80px 80px, 100% 100%;
+    background-position: 0 0, 25px 25px, 0 0, 0 0;
     color: white;
+    
+    // Add subtle animated overlay for contact section
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        linear-gradient(45deg, transparent 30%, rgba(228, 30, 32, 0.03) 30%, rgba(228, 30, 32, 0.03) 32%, transparent 32%),
+        linear-gradient(-45deg, transparent 30%, rgba(228, 30, 32, 0.03) 30%, rgba(228, 30, 32, 0.03) 32%, transparent 32%);
+      background-size: 60px 60px;
+      animation: contactPattern 20s linear infinite;
+      pointer-events: none;
+      z-index: 1;
+    }
+    
+    // Ensure content stays above pattern
+    > * {
+      position: relative;
+      z-index: 2;
+    }
   }
   
   .section-header {
@@ -2439,7 +2472,7 @@ code, pre {
     
     .section-subtitle {
       font-size: 1.1rem;
-      color: var(--text-muted);
+      color: var(--text-secondary);
       max-width: 600px;
       margin: 0 auto;
     }
@@ -2456,9 +2489,120 @@ code, pre {
       }
       
       .contact-description {
-        color: var(--text-muted);
+        color: var(--text-secondary);
         font-size: 1rem;
         line-height: 1.6;
+      }
+    }
+    
+    // Social Icons Section
+    .social-icons-section {
+      .social-title {
+        color: var(--text-color);
+        font-weight: 600;
+        font-size: 1.1rem;
+        margin-bottom: 1.5rem;
+        text-align: center;
+      }
+      
+      .social-icons-horizontal {
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+        
+        .social-icon-wrapper {
+          position: relative;
+          
+          .social-icon-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: var(--card-bg);
+            border: 2px solid transparent;
+            border-radius: 50%;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 1.4rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+            
+            // Hover tooltip
+            &::before {
+              content: attr(data-tooltip);
+              position: absolute;
+              bottom: 100%;
+              left: 50%;
+              transform: translateX(-50%) translateY(-8px);
+              background: rgba(0, 0, 0, 0.9);
+              color: white;
+              padding: 0.5rem 0.75rem;
+              border-radius: 6px;
+              font-size: 0.75rem;
+              font-weight: 500;
+              white-space: nowrap;
+              opacity: 0;
+              pointer-events: none;
+              transition: all 0.3s ease;
+              z-index: 1000;
+              
+              [data-theme="dark"] & {
+                background: rgba(255, 255, 255, 0.9);
+                color: #000;
+              }
+            }
+            
+            // Tooltip arrow
+            &::after {
+              content: '';
+              position: absolute;
+              bottom: 100%;
+              left: 50%;
+              transform: translateX(-50%) translateY(-2px);
+              border: 4px solid transparent;
+              border-top-color: rgba(0, 0, 0, 0.9);
+              opacity: 0;
+              pointer-events: none;
+              transition: all 0.3s ease;
+              z-index: 1000;
+              
+              [data-theme="dark"] & {
+                border-top-color: rgba(255, 255, 255, 0.9);
+              }
+            }
+            
+            &:hover {
+              transform: translateY(-3px) scale(1.1);
+              border-color: var(--social-color);
+              color: var(--social-color);
+              box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+              
+              &::before,
+              &::after {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+              }
+            }
+            
+            &:active {
+              transform: translateY(-1px) scale(1.05);
+            }
+          }
+        }
+        
+        @media (max-width: 576px) {
+          gap: 1rem;
+          
+          .social-icon-link {
+            width: 45px;
+            height: 45px;
+            font-size: 1.2rem;
+          }
+        }
       }
     }
     
@@ -2606,7 +2750,7 @@ code, pre {
       }
       
       .form-subtitle {
-        color: var(--text-muted);
+        color: var(--text-secondary);
         font-size: 0.95rem;
         margin: 0;
       }
@@ -3219,6 +3363,16 @@ code, pre {
         font-weight: 500;
       }
     }
+  }
+}
+
+// Contact section pattern animation
+@keyframes contactPattern {
+  0% {
+    background-position: 0 0, 0 0;
+  }
+  100% {
+    background-position: 60px 60px, -60px -60px;
   }
 }
 

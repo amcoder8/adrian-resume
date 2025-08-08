@@ -263,9 +263,9 @@ const About: React.FC = () => {
                         <h4>Development Philosophy</h4>
                       </div>
                       <blockquote className="philosophy-quote">
-                        "Whether I'm crafting clean, efficient code or diving into music production,
-                        I approach every project with the same dedication to excellence that defines
-                        both Chicago's architectural marvels and Albania's rich cultural heritage."
+                        "I approach every project with clarity, precision, and purpose. 
+                        Whether it’s writing clean code or creating music, I focus on what works, 
+                        communicate clearly, and adapt to each client’s unique needs."
                       </blockquote>
                       <p className="content-text mt-3">
                         When I'm not coding, you'll find me exploring Chicago's neighborhoods, producing

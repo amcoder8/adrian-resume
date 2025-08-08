@@ -341,56 +341,6 @@ const Skills: React.FC = () => {
             </p>
           </div>
 
-          {/* Skills Overview Stats */}
-          <div className="skills-stats mb-5" data-aos="fade-up">
-            <div className="row g-4">
-              <div className="col-md-3 col-sm-6">
-                <div className="stat-card">
-                  <div className="stat-icon">
-                    <FaTrophy />
-                  </div>
-                  <div className="stat-content">
-                    <h3 className="stat-number">{skills.length}</h3>
-                    <p className="stat-label">Technologies</p>
-                  </div>
-                </div>
-              </div>
-              <div className="col-md-3 col-sm-6">
-                <div className="stat-card">
-                  <div className="stat-icon">
-                    <FaCodeBranch />
-                  </div>
-                  <div className="stat-content">
-                    <h3 className="stat-number">{skills.filter(s => s.category === 'frontend').length}</h3>
-                    <p className="stat-label">Frontend</p>
-                  </div>
-                </div>
-              </div>
-              <div className="col-md-3 col-sm-6">
-                <div className="stat-card">
-                  <div className="stat-icon">
-                    <FaTools />
-                  </div>
-                  <div className="stat-content">
-                    <h3 className="stat-number">{skills.filter(s => s.category === 'tools').length}</h3>
-                    <p className="stat-label">Dev Tools</p>
-                  </div>
-                </div>
-              </div>
-              <div className="col-md-3 col-sm-6">
-                <div className="stat-card">
-                  <div className="stat-icon">
-                    <FaPaintBrush />
-                  </div>
-                  <div className="stat-content">
-                    <h3 className="stat-number">{skills.filter(s => s.category === 'design').length}</h3>
-                    <p className="stat-label">Design</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
           {/* Category Filter */}
           <div className="category-filter mb-5" data-aos="fade-up" data-aos-delay="200">
             <div className="filter-buttons">
