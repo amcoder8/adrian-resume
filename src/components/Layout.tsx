@@ -4,7 +4,11 @@ import { ThemeProvider } from './ThemeProvider';
 import Header from './Header';
 import Hero from './Hero';
 import About from './About';
+import Services from './Services';
+import Projects from './Projects';
+import Testimonials from './Testimonials';
 import Skills from './Skills';
+import Blog from './Blog';
 import Contact from './Contact';
 import Footer from './Footer';
 
@@ -31,8 +35,8 @@ const Layout: React.FC = () => {
     title: 'Frontend Developer',
     tagline: 'Passionate developer creating beautiful, functional web experiences with modern technologies.',
     email: 'adrian@example.com',
-    phone: '+1 (555) 123-4567',
-    location: 'New York, NY'
+    phone: '+1 (847) 343-0291',
+    location: 'Chicago, IL'
   };
 
   // Social links data
@@ -61,7 +65,11 @@ const Layout: React.FC = () => {
         <main>
           <Hero personalInfo={personalInfo} socialLinks={socialLinks} />
           <About />
+          <Services />
+          <Projects />
+          <Testimonials />
           <Skills />
+          <Blog />
           <Contact />
         </main>
         <Footer />

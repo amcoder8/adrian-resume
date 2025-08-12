@@ -1767,7 +1767,7 @@ code, pre {
 .skills-section {
   position: relative;
   padding: 6rem 0;
-  background: var(--bg-color);
+  background: var(--surface-color);
   
   // Dark theme - black to dark grey gradient
   [data-theme="dark"] & {
@@ -2398,9 +2398,7 @@ code, pre {
 .contact-section {
   position: relative;
   padding: 6rem 0;
-  background: 
-    linear-gradient(135deg, rgba(102, 126, 234, 0.03) 0%, rgb(236, 75, 75) 100%),
-    var(--bg-color);
+  background: var(--surface-color);
   
   // Dark theme - unique contact pattern with dot matrix overlay
   [data-theme="dark"] & {
@@ -3378,3 +3376,18 @@ code, pre {
 
 // Import floating header styles
 @import 'components/floating-header';
+
+// Import services section styles
+@import 'services-section';
+
+// Import projects section styles
+@import 'projects-section';
+
+// Import testimonials section styles
+@import 'testimonials-section';
+
+// Import blog section styles
+@import 'blog-section';
+
+// Import resume generator styles
+@import 'resume-generator';

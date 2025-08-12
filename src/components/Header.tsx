@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FaSun, FaMoon, FaBars, FaTimes, FaHome, FaUser, FaCog, FaEnvelope } from 'react-icons/fa';
+import { FaSun, FaMoon, FaBars, FaTimes, FaHome, FaUser, FaCog, FaEnvelope, FaProjectDiagram, FaQuoteLeft, FaServicestack, FaBlog } from 'react-icons/fa';
 import { useTheme } from './ThemeProvider';
 
 const Header: React.FC = () => {
@@ -13,7 +13,7 @@ const Header: React.FC = () => {
       setIsScrolled(window.scrollY > 100);
 
       // Update active section based on scroll position
-      const sections = ['home', 'about', 'skills', 'contact'];
+      const sections = ['home', 'about', 'services', 'projects', 'testimonials', 'skills', 'blog', 'contact'];
       const current = sections.find(section => {
         const element = document.getElementById(section);
         if (element) {
@@ -35,7 +35,11 @@ const Header: React.FC = () => {
   const navItems = [
     { label: 'Home', href: '#home', icon: <FaHome /> },
     { label: 'About', href: '#about', icon: <FaUser /> },
+    { label: 'Services', href: '#services', icon: <FaServicestack /> },
+    { label: 'Projects', href: '#projects', icon: <FaProjectDiagram /> },
+    { label: 'Testimonials', href: '#testimonials', icon: <FaQuoteLeft /> },
     { label: 'Skills', href: '#skills', icon: <FaCog /> },
+    { label: 'Blog', href: '#blog', icon: <FaBlog /> },
     { label: 'Contact', href: '#contact', icon: <FaEnvelope /> },
   ];
 

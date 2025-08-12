@@ -14,12 +14,16 @@ import {
   FaInstagram
 } from 'react-icons/fa';
 import { SiTiktok } from 'react-icons/si';
+import ResumeGenerator from './ResumeGenerator';
 
 interface FormData {
   name: string;
   email: string;
   subject: string;
   message: string;
+  budget?: string;
+  timeline?: string;
+  projectType?: string;
 }
 
 interface FormErrors {
@@ -27,6 +31,9 @@ interface FormErrors {
   email?: string;
   subject?: string;
   message?: string;
+  budget?: string;
+  timeline?: string;
+  projectType?: string;
 }
 
 const Contact: React.FC = () => {
@@ -34,7 +41,10 @@ const Contact: React.FC = () => {
     name: '',
     email: '',
     subject: '',
-    message: ''
+    message: '',
+    budget: '',
+    timeline: '',
+    projectType: ''
   });
 
   const [errors, setErrors] = useState<FormErrors>({});
@@ -111,33 +121,59 @@ const Contact: React.FC = () => {
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {};
 
-    // Name validation
+    // Name validation - enhanced
     if (!formData.name.trim()) {
       newErrors.name = 'Name is required';
     } else if (formData.name.trim().length < 2) {
       newErrors.name = 'Name must be at least 2 characters';
+    } else if (formData.name.trim().length > 50) {
+      newErrors.name = 'Name must be less than 50 characters';
+    } else if (!/^[a-zA-Z\s]+$/.test(formData.name.trim())) {
+      newErrors.name = 'Name should only contain letters and spaces';
     }
 
-    // Email validation
+    // Email validation - enhanced
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!formData.email.trim()) {
       newErrors.email = 'Email is required';
     } else if (!emailRegex.test(formData.email)) {
       newErrors.email = 'Please enter a valid email address';
+    } else if (formData.email.length > 100) {
+      newErrors.email = 'Email must be less than 100 characters';
     }
 
-    // Subject validation
+    // Subject validation - enhanced
     if (!formData.subject.trim()) {
       newErrors.subject = 'Subject is required';
     } else if (formData.subject.trim().length < 5) {
       newErrors.subject = 'Subject must be at least 5 characters';
+    } else if (formData.subject.trim().length > 100) {
+      newErrors.subject = 'Subject must be less than 100 characters';
     }
 
-    // Message validation
+    // Message validation - enhanced
     if (!formData.message.trim()) {
       newErrors.message = 'Message is required';
     } else if (formData.message.trim().length < 10) {
       newErrors.message = 'Message must be at least 10 characters';
+    } else if (formData.message.trim().length > 1000) {
+      newErrors.message = 'Message must be less than 1000 characters';
+    }
+
+    // Budget validation (optional but with format check)
+    if (formData.budget && formData.budget.trim()) {
+      if (!/^[\d,\s$-]+$/.test(formData.budget)) {
+        newErrors.budget = 'Please enter a valid budget format (e.g., $5000-$10000)';
+      }
+    }
+
+    // Timeline validation (optional but with format check)
+    if (formData.timeline && formData.timeline.trim()) {
+      if (formData.timeline.trim().length < 3) {
+        newErrors.timeline = 'Please provide a more specific timeline';
+      } else if (formData.timeline.trim().length > 50) {
+        newErrors.timeline = 'Timeline must be less than 50 characters';
+      }
     }
 
     setErrors(newErrors);
@@ -168,27 +204,55 @@ const Contact: React.FC = () => {
     }
 
     setIsSubmitting(true);
+    setSubmitStatus('idle');
 
     try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      // Enhanced form submission with better data structure
+      const submissionData = {
+        ...formData,
+        timestamp: new Date().toISOString(),
+        userAgent: navigator.userAgent,
+        referrer: document.referrer || 'direct',
+        sessionId: Math.random().toString(36).substr(2, 9)
+      };
 
-      // For demo purposes, we'll always show success
+      // In a real implementation, you would send this to your backend
+      // Example endpoints: Netlify Forms, Formspree, custom API, etc.
+      
+      // For now, we'll simulate the API call with validation
+      await new Promise((resolve, reject) => {
+        setTimeout(() => {
+          // Simulate random success/failure for demo
+          if (Math.random() > 0.1) { // 90% success rate
+            resolve('success');
+          } else {
+            reject(new Error('Network error'));
+          }
+        }, 2000);
+      });
+
+      // Success: Clear form and show success message
       setSubmitStatus('success');
-      setFormData({ name: '', email: '', subject: '', message: '' });
+      setFormData({ 
+        name: '', 
+        email: '', 
+        subject: '', 
+        message: '',
+        budget: '',
+        timeline: '',
+        projectType: ''
+      });
+      setErrors({});
 
-      // Reset success message after 5 seconds
-      setTimeout(() => {
-        setSubmitStatus('idle');
-      }, 5000);
+      // Auto-hide success message after 5 seconds
+      setTimeout(() => setSubmitStatus('idle'), 5000);
 
     } catch (error) {
+      console.error('Form submission error:', error);
       setSubmitStatus('error');
-
-      // Reset error message after 5 seconds
-      setTimeout(() => {
-        setSubmitStatus('idle');
-      }, 5000);
+      
+      // Auto-hide error message after 8 seconds
+      setTimeout(() => setSubmitStatus('idle'), 8000);
     } finally {
       setIsSubmitting(false);
     }
@@ -465,6 +529,32 @@ const Contact: React.FC = () => {
                   )}
                 </form>
               </div>
+            </div>
+          </div>
+
+          {/* Resume Generator Section */}
+          <div className="row mt-5">
+            <div className="col-12">
+              <div className="text-center mb-4">
+                <h3 className="section-subtitle">Professional Resume</h3>
+                <p className="text">
+                  Download my comprehensive resume with detailed work experience, 
+                  skills, and achievements in PDF format.
+                </p>
+              </div>
+              <ResumeGenerator 
+                personalInfo={{
+                  name: 'Adrian Mustafa',
+                  title: 'Frontend Developer',
+                  email: 'adrian@example.com',
+                  phone: '+1 (847) 343-0291',
+                  location: 'Chicago, IL'
+                }}
+                socialLinks={[
+                  { platform: 'linkedin', url: 'https://linkedin.com/in/adrian' },
+                  { platform: 'github', url: 'https://github.com/adrian' }
+                ]}
+              />
             </div>
           </div>
 

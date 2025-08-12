@@ -1,5 +1,5 @@
-import React, { Suspense, useRef, useState } from 'react';
-import { FaDownload, FaEnvelope, FaGithub, FaLinkedin } from 'react-icons/fa';
+import React, { Suspense, useRef, useState, useEffect } from 'react';
+import { FaDownload, FaEnvelope, FaGithub, FaLinkedin, FaArrowDown } from 'react-icons/fa';
 import Spline from '@splinetool/react-spline';
 import type { PersonalInfo, SocialLink } from '../types';
 
@@ -12,11 +12,32 @@ const Hero: React.FC<HeroProps> = ({ personalInfo, socialLinks }) => {
   const splineRef = useRef<any>(null);
   const [isSplineLoaded, setIsSplineLoaded] = useState(false);
   const [isModelActivated, setIsModelActivated] = useState(false);
+  const [currentTaglineIndex, setCurrentTaglineIndex] = useState(0);
+
+  // Rotating taglines based on your portfolio projects
+  const taglines = [
+    "Crafting Digital Experiences",
+    "Building Tourism Platforms", 
+    "Creating Business Solutions",
+    "Designing User-Centered Interfaces",
+    "Developing Modern Web Applications"
+  ];
+
+  // Rotate taglines every 3 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentTaglineIndex((prevIndex) => 
+        (prevIndex + 1) % taglines.length
+      );
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [taglines.length]);
 
   const handleDownloadResume = () => {
     // In a real application, this would download an actual PDF
     const link = document.createElement('a');
-    link.href = '/resume.pdf'; // This file should be in the public folder
+    link.href = '/Adrian_Mustafa_Resume.pdf'; // This file should be in the public folder
     link.download = 'Adrian-Resume.pdf';
     link.click();
   };
@@ -90,7 +111,7 @@ const Hero: React.FC<HeroProps> = ({ personalInfo, socialLinks }) => {
               </h1>
               <h2 className="hero-subtitle">{personalInfo.title}</h2>
               <p className="lead hero-tagline mb-4">
-                {personalInfo.tagline}
+                {taglines[currentTaglineIndex]}
               </p>
 
               <div className="hero-buttons">

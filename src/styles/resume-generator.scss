@@ -1,0 +1,82 @@
+// Resume Generator Styles
+.resume-generator {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  margin: 2rem 0;
+
+  .resume-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+
+    .resume-btn {
+      padding: 0.8rem 2rem;
+      font-weight: 600;
+      border-radius: 25px;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      min-width: 180px;
+      justify-content: center;
+
+      &.btn-primary {
+        background: linear-gradient(135deg, #E41E20 0%, #c41e3a 100%);
+        border: none;
+        color: white;
+        box-shadow: 0 5px 15px rgba(228, 30, 32, 0.3);
+
+        &:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 8px 25px rgba(228, 30, 32, 0.4);
+          background: linear-gradient(135deg, #c41e3a 0%, #E41E20 100%);
+        }
+      }
+
+      &.btn-outline-primary {
+        border: 2px solid #E41E20;
+        color: #E41E20;
+        background: white;
+
+        &:hover {
+          background: #E41E20;
+          color: white;
+          transform: translateY(-3px);
+          box-shadow: 0 8px 25px rgba(228, 30, 32, 0.3);
+        }
+      }
+    }
+  }
+
+  .resume-info {
+    p {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+  }
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+  .resume-generator {
+    padding: 1.5rem;
+    margin: 1rem 0;
+
+    .resume-actions {
+      flex-direction: column;
+      align-items: center;
+
+      .resume-btn {
+        width: 100%;
+        max-width: 250px;
+      }
+    }
+  }
+}
