@@ -10,6 +10,7 @@ import Testimonials from './Testimonials';
 import Skills from './Skills';
 import Blog from './Blog';
 import Contact from './Contact';
+import LaTeXTemplate from './LaTeXTemplate';
 import Footer from './Footer';
 
 // Import styles
@@ -31,7 +32,7 @@ const Layout: React.FC = () => {
 
   // Personal information data
   const personalInfo = {
-    name: 'Adrian',
+    name: 'Adrian Mustafa',
     title: 'Frontend Developer',
     tagline: 'Passionate developer creating beautiful, functional web experiences with modern technologies.',
     email: 'adrian@example.com',
@@ -43,12 +44,12 @@ const Layout: React.FC = () => {
   const socialLinks = [
     {
       platform: 'github',
-      url: 'https://github.com/adrian',
+      url: 'https://github.com/adrian-mustafa',
       icon: 'FaGithub'
     },
     {
       platform: 'linkedin',
-      url: 'https://linkedin.com/in/adrian',
+      url: 'https://linkedin.com/in/adrian-mustafa',
       icon: 'FaLinkedin'
     },
     {
@@ -70,6 +71,7 @@ const Layout: React.FC = () => {
           <Testimonials />
           <Skills />
           <Blog />
+          <LaTeXTemplate />
           <Contact />
         </main>
         <Footer />

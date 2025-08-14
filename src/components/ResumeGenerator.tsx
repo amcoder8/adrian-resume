@@ -1,5 +1,5 @@
-import React from 'react';
-import { FaDownload, FaEye, FaUser, FaEnvelope, FaPhone, FaMapMarkerAlt, FaLinkedin, FaGithub } from 'react-icons/fa';
+import React, { useState } from 'react';
+import { FaDownload, FaEye, FaUser, FaEnvelope, FaPhone, FaMapMarkerAlt, FaLinkedin, FaGithub, FaCode } from 'react-icons/fa';
 
 interface ResumeGeneratorProps {
   personalInfo: {
@@ -16,15 +16,47 @@ interface ResumeGeneratorProps {
 }
 
 const ResumeGenerator: React.FC<ResumeGeneratorProps> = ({ personalInfo, socialLinks }) => {
+  const [formData, setFormData] = useState({
+    name: "Adrian Mustafa",
+    title: "Front-End Web Developer | 5+ Years of Experience | 23 Years Old",
+    email: "adrian@example.com",
+    phone: "+1 (847) 343-0291",
+    location: "Chicago, IL",
+    linkedin: "linkedin.com/in/adrian-mustafa",
+    github: "github.com/adrian-mustafa"
+  });
+  const [isGenerating, setIsGenerating] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const handleInputChange = (field: string, value: string) => {
+    setFormData((prev: typeof formData) => ({
+      ...prev,
+      [field]: value
+    }));
+  };
+
+  const resetToDefaults = () => {
+    setFormData({
+      name: "Adrian Mustafa",
+      title: "Front-End Web Developer | 5+ Years of Experience | 23 Years Old",
+      email: "adrian@example.com",
+      phone: "+1 (847) 343-0291",
+      location: "Chicago, IL",
+      linkedin: "linkedin.com/in/adrian-mustafa",
+      github: "github.com/adrian-mustafa"
+    });
+    setError(null);
+  };
+
   const resumeData = {
     personal: {
-      name: "Adrian Mustafa", // ← Change this from "Adrian Selmani"
-      title: "Front-End Web Developer | 5+ Years of Experience | 23 Years Old",
-      email: "adrian@example.com", // ← Update with your real email
-      phone: "+1 (847) 343-0291", // ← Update with your real phone
-      location: "Chicago, IL", // ← Update with your real location
-      linkedin: "linkedin.com/in/adrian-mustafa", // ← Update with your real LinkedIn
-      github: "github.com/adrian-mustafa" // ← Update with your real GitHub
+      name: formData.name,
+      title: formData.title,
+      email: formData.email,
+      phone: formData.phone,
+      location: formData.location,
+      linkedin: formData.linkedin,
+      github: formData.github
     },
     summary: "Front-End Web Developer with 5+ years of experience specializing in React, TypeScript, and modern web technologies. Team player with a goal-focused mindset, known for being a quick learner, creative thinker, and detail-oriented professional. Passionate about delivering responsive, high-performance websites from concept to launch.",
     
@@ -119,16 +151,28 @@ const ResumeGenerator: React.FC<ResumeGeneratorProps> = ({ personalInfo, socialL
   };
 
   const generatePDF = () => {
-    // Create resume content for PDF generation
-    const resumeHTML = generateResumeHTML();
+    setIsGenerating(true);
+    setError(null);
     
-    // Open print dialog (browser will handle PDF generation)
-    const printWindow = window.open('', '_blank');
-    if (printWindow) {
-      printWindow.document.write(resumeHTML);
-      printWindow.document.close();
-      printWindow.focus();
-      printWindow.print();
+    try {
+      // Create resume content for PDF generation
+      const resumeHTML = generateResumeHTML();
+      
+      // Open print dialog (browser will handle PDF generation)
+      const printWindow = window.open('', '_blank');
+      if (printWindow) {
+        printWindow.document.write(resumeHTML);
+        printWindow.document.close();
+        printWindow.focus();
+        printWindow.print();
+      } else {
+        setError('Popup blocked. Please allow popups for this site and try again.');
+      }
+    } catch (err) {
+      setError('Failed to generate PDF. Please try again.');
+      console.error('PDF generation error:', err);
+    } finally {
+      setIsGenerating(false);
     }
   };
 
@@ -484,6 +528,97 @@ const ResumeGenerator: React.FC<ResumeGeneratorProps> = ({ personalInfo, socialL
 
   return (
     <div className="resume-generator">
+      {/* Interactive Form Section */}
+      <div className="resume-form-section mb-4">
+        <h3 className="h5 mb-3">Customize Your Resume</h3>
+        <div className="row g-3">
+          <div className="col-md-6">
+            <label htmlFor="name" className="form-label">Full Name</label>
+            <input
+              type="text"
+              className="form-control"
+              id="name"
+              value={formData.name}
+              onChange={(e) => handleInputChange('name', e.target.value)}
+              placeholder="Enter your full name"
+            />
+          </div>
+          <div className="col-md-6">
+            <label htmlFor="title" className="form-label">Professional Title</label>
+            <input
+              type="text"
+              className="form-control"
+              id="title"
+              value={formData.title}
+              onChange={(e) => handleInputChange('title', e.target.value)}
+              placeholder="Enter your professional title"
+            />
+          </div>
+          <div className="col-md-6">
+            <label htmlFor="email" className="form-label">Email</label>
+            <input
+              type="email"
+              className="form-control"
+              id="email"
+              value={formData.email}
+              onChange={(e) => handleInputChange('email', e.target.value)}
+              placeholder="Enter your email"
+            />
+          </div>
+          <div className="col-md-6">
+            <label htmlFor="phone" className="form-label">Phone</label>
+            <input
+              type="tel"
+              className="form-control"
+              id="phone"
+              value={formData.phone}
+              onChange={(e) => handleInputChange('phone', e.target.value)}
+              placeholder="Enter your phone number"
+            />
+          </div>
+          <div className="col-md-6">
+            <label htmlFor="location" className="form-label">Location</label>
+            <input
+              type="text"
+              className="form-control"
+              id="location"
+              value={formData.location}
+              onChange={(e) => handleInputChange('location', e.target.value)}
+              placeholder="Enter your location"
+            />
+          </div>
+          <div className="col-md-6">
+            <label htmlFor="linkedin" className="form-label">LinkedIn</label>
+            <input
+              type="url"
+              className="form-control"
+              id="linkedin"
+              value={formData.linkedin}
+              onChange={(e) => handleInputChange('linkedin', e.target.value)}
+              placeholder="linkedin.com/in/your-profile"
+            />
+          </div>
+        </div>
+        
+        {/* Reset Button */}
+        <div className="text-center mt-3">
+          <button 
+            type="button" 
+            className="btn btn-outline-secondary btn-sm"
+            onClick={resetToDefaults}
+          >
+            Reset to Defaults
+          </button>
+        </div>
+      </div>
+
+      {/* Error Display */}
+      {error && (
+        <div className="alert alert-danger mt-3" role="alert">
+          <strong>Error:</strong> {error}
+        </div>
+      )}
+
       <div className="resume-actions">
         <button 
           className="btn btn-primary resume-btn"
@@ -496,9 +631,21 @@ const ResumeGenerator: React.FC<ResumeGeneratorProps> = ({ personalInfo, socialL
         <button 
           className="btn btn-outline-primary resume-btn"
           onClick={generatePDF}
+          disabled={isGenerating}
         >
-          <FaDownload className="me-2" />
-          Generate Updated PDF
+          {isGenerating ? (
+            <>
+              <div className="spinner-border spinner-border-sm me-2" role="status">
+                <span className="visually-hidden">Generating...</span>
+              </div>
+              Generating PDF...
+            </>
+          ) : (
+            <>
+              <FaDownload className="me-2" />
+              Generate Updated PDF
+            </>
+          )}
         </button>
         
         <button 
@@ -512,9 +659,29 @@ const ResumeGenerator: React.FC<ResumeGeneratorProps> = ({ personalInfo, socialL
       
       <div className="resume-info">
         <p className="text-muted">
-          Download my official resume or generate an updated version with the latest 
+          Customize your resume information above, then download my official resume or generate an updated version with the latest 
           information. Both include comprehensive details about my experience, skills, and achievements.
         </p>
+        
+        <div className="template-link mt-3">
+          <p className="text-muted mb-2">
+            <strong>Looking for a professional LaTeX resume template?</strong>
+          </p>
+          <a 
+            href="#latex-template" 
+            className="btn btn-outline-secondary btn-sm"
+            onClick={(e) => {
+              e.preventDefault();
+              const element = document.querySelector('.latex-template');
+              if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}
+          >
+            <FaCode className="me-2" />
+            View LaTeX Template
+          </a>
+        </div>
       </div>
     </div>
   );
