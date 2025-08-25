@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FaSun, FaMoon, FaBars, FaTimes, FaHome, FaUser, FaCog, FaEnvelope, FaProjectDiagram, FaQuoteLeft, FaServicestack, FaBlog } from 'react-icons/fa';
+import { FaSun, FaMoon, FaBars, FaTimes, FaHome, FaUser, FaCog, FaEnvelope, FaProjectDiagram, FaQuoteLeft, FaServicestack, FaBlog, FaFileAlt } from 'react-icons/fa';
 import { useTheme } from './ThemeProvider';
 
 const Header: React.FC = () => {
@@ -41,9 +41,16 @@ const Header: React.FC = () => {
     { label: 'Skills', href: '#skills', icon: <FaCog /> },
     { label: 'Blog', href: '#blog', icon: <FaBlog /> },
     { label: 'Contact', href: '#contact', icon: <FaEnvelope /> },
+    { label: 'Resume Generator', href: '/resume-generator', icon: <FaFileAlt />, isExternal: true },
   ];
 
   const scrollToSection = (href: string) => {
+    // Handle external links
+    if (href.startsWith('/')) {
+      window.location.href = href;
+      return;
+    }
+    
     const element = document.querySelector(href);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
@@ -74,7 +81,7 @@ const Header: React.FC = () => {
                 {navItems.map((item) => (
                   <button
                     key={item.label}
-                    className={`nav-link-static ${activeSection === item.href.slice(1) ? 'active' : ''}`}
+                    className={`nav-link-static ${activeSection === item.href.slice(1) ? 'active' : ''} ${item.isExternal ? 'external-link' : ''}`}
                     onClick={() => scrollToSection(item.href)}
                   >
                     {item.label}
@@ -119,7 +126,7 @@ const Header: React.FC = () => {
             {navItems.map((item, index) => (
               <button
                 key={item.label}
-                className={`nav-pill ${activeSection === item.href.slice(1) ? 'active' : ''}`}
+                className={`nav-pill ${activeSection === item.href.slice(1) ? 'active' : ''} ${item.isExternal ? 'external-link' : ''}`}
                 onClick={() => scrollToSection(item.href)}
                 title={item.label}
                 style={{ '--delay': `${index * 0.1}s` } as React.CSSProperties}
@@ -158,7 +165,7 @@ const Header: React.FC = () => {
             {navItems.map((item, index) => (
               <button
                 key={item.label}
-                className={`mobile-nav-item ${activeSection === item.href.slice(1) ? 'active' : ''}`}
+                className={`mobile-nav-item ${activeSection === item.href.slice(1) ? 'active' : ''} ${item.isExternal ? 'external-link' : ''}`}
                 onClick={() => scrollToSection(item.href)}
                 style={{ '--delay': `${index * 0.1}s` } as React.CSSProperties}
               >

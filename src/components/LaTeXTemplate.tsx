@@ -47,187 +47,205 @@ const LaTeXTemplate: React.FC = () => {
   };
 
   return (
-    <div id="latex-template" className="latex-template">
-      <div className="template-header text-center mb-4">
-        <h2 className="h3 mb-3">
-          <FaCode className="me-2 text-primary" />
-          Professional LaTeX Resume Template
-        </h2>
-        <p className="text-muted">
-          Based on the highly-rated template by {templateInfo.author} with {templateInfo.stats.stars} stars on GitHub
-        </p>
-      </div>
+    <section id="latex-template" className="latex-template">
+      <div className="container">
+        <div className="template-header">
+          <h2>
+            <FaCode className="me-2" />
+            Professional <span className="text-primary">LaTeX</span> Resume Template
+          </h2>
+          <p className="section-subtitle">
+            Based on the highly-rated template by {templateInfo.author} with {templateInfo.stats.stars} stars on GitHub. 
+            Download this professional LaTeX template to create crisp, ATS-optimized resumes.
+          </p>
+        </div>
 
-      <div className="template-card">
-        <div className="row g-4">
-          {/* Template Info */}
-          <div className="col-lg-8">
-            <div className="template-info">
-              <h4 className="h5 mb-3">Template Features</h4>
-              <ul className="feature-list">
-                {templateInfo.features.map((feature, index) => (
-                  <li key={index} className="feature-item">
-                    <FaFileAlt className="feature-icon me-2" />
-                    {feature}
-                  </li>
-                ))}
-              </ul>
-              
-              <div className="template-description mt-3">
-                <p>{templateInfo.description}</p>
+        <div className="template-card">
+          <div className="row g-4">
+            {/* Template Info */}
+            <div className="col-lg-8">
+              <div className="template-info">
+                <h4>Template Features</h4>
+                <ul className="feature-list">
+                  {templateInfo.features.map((feature, index) => (
+                    <li key={index} className="feature-item">
+                      <FaFileAlt className="feature-icon" />
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+                
+                <div className="template-description">
+                  <p>{templateInfo.description}</p>
+                </div>
+
+                <div className="template-stats">
+                  <div className="d-flex align-items-center gap-3 flex-wrap">
+                    <span className="stat-item">
+                      <FaStar className="me-1" />
+                      {templateInfo.stats.stars} stars
+                    </span>
+                    <span className="stat-item">
+                      <FaGithub className="me-1" />
+                      {templateInfo.stats.forks} forks
+                    </span>
+                    <span className="stat-item">
+                      <FaCode className="me-1" />
+                      {templateInfo.stats.language}
+                    </span>
+                  </div>
+                </div>
               </div>
+            </div>
 
-              <div className="template-stats mt-3">
-                <div className="d-flex align-items-center gap-3">
-                  <span className="stat-item">
-                    <FaStar className="text-warning me-1" />
-                    {templateInfo.stats.stars} stars
-                  </span>
-                  <span className="stat-item">
-                    <FaGithub className="me-1" />
-                    {templateInfo.stats.forks} forks
-                  </span>
-                  <span className="stat-item">
-                    <FaCode className="me-1" />
-                    {templateInfo.stats.language}
-                  </span>
+            {/* Template Actions */}
+            <div className="col-lg-4">
+              <div className="template-actions">
+                <div className="action-buttons">
+                  <button 
+                    className="btn btn-primary"
+                    onClick={handleDownload}
+                  >
+                    <FaDownload className="me-2" />
+                    Download Template
+                  </button>
+                  
+                  <button 
+                    className="btn btn-outline-primary"
+                    onClick={openPreview}
+                  >
+                    <FaEye className="me-2" />
+                    Preview Code
+                  </button>
+                  
+                  <button 
+                    className="btn btn-secondary"
+                    onClick={openGitHub}
+                  >
+                    <FaGithub className="me-2" />
+                    View on GitHub
+                  </button>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Template Actions */}
-          <div className="col-lg-4">
-            <div className="template-actions">
-              <div className="action-buttons d-grid gap-3">
-                <button 
-                  className="btn btn-primary btn-lg"
-                  onClick={handleDownload}
-                >
-                  <FaDownload className="me-2" />
-                  Download Template
-                </button>
-                
-                <button 
-                  className="btn btn-outline-primary"
-                  onClick={openPreview}
-                >
-                  <FaEye className="me-2" />
-                  Preview Template
-                </button>
-                
-                <button 
-                  className="btn btn-outline-secondary"
-                  onClick={openGitHub}
-                >
-                  <FaGithub className="me-2" />
-                  View on GitHub
-                </button>
-              </div>
-
-              <div className="template-note mt-3">
-                <small className="text-muted">
-                  <strong>Note:</strong> This template requires LaTeX knowledge or tools like Overleaf to use.
-                  The template is free and open-source under the original author's license.
-                </small>
-              </div>
-            </div>
+          {/* Usage Guide */}
+          <div className="usage-guide">
+            <h4>How to Use This Template</h4>
+            <ul className="guide-steps">
+              <li className="guide-step">
+                <div className="step-content">
+                  <div className="step-title">Install LaTeX Distribution</div>
+                  <div className="step-description">
+                    Download and install a LaTeX distribution like TeX Live, MiKTeX, or MacTeX for your operating system.
+                  </div>
+                </div>
+              </li>
+              <li className="guide-step">
+                <div className="step-content">
+                  <div className="step-title">Download & Extract</div>
+                  <div className="step-description">
+                    Download the template files and extract them to a folder on your computer.
+                  </div>
+                </div>
+              </li>
+              <li className="guide-step">
+                <div className="step-content">
+                  <div className="step-title">Customize Content</div>
+                  <div className="step-description">
+                    Edit the .tex file with your personal information, experience, and skills using any text editor.
+                  </div>
+                </div>
+              </li>
+              <li className="guide-step">
+                <div className="step-content">
+                  <div className="step-title">Compile to PDF</div>
+                  <div className="step-description">
+                    Use pdflatex or your LaTeX editor to compile the .tex file into a professional PDF resume.
+                  </div>
+                </div>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
 
-      {/* Template Preview Modal */}
+      {/* Preview Modal */}
       {isPreviewOpen && (
         <div className="template-preview-modal" onClick={closePreview}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
             <div className="modal-header">
-              <h5 className="modal-title">Template Preview</h5>
-              <button 
-                type="button" 
-                className="btn-close" 
-                onClick={closePreview}
-                aria-label="Close"
-              ></button>
+              <h3 className="modal-title">LaTeX Template Preview</h3>
+              <button className="btn-close" onClick={closePreview}>
+                ×
+              </button>
             </div>
             <div className="modal-body">
               <div className="preview-content">
-                <h4>Template Structure</h4>
-                <pre className="template-code">
-{`% Main Resume Template Structure
-\\documentclass[11pt,letterpaper,sans]{moderncv}
+                <h4>Sample LaTeX Code Structure</h4>
+                <div className="template-code">
+{`\\documentclass[11pt,a4paper,sans]{moderncv}
+\\moderncvstyle{banking}
+\\moderncvcolor{red}
+
+\\usepackage[scale=0.75]{geometry}
+\\usepackage{import}
 
 % Personal Information
-\\name{Your Name}
+\\name{Your}{Name}
 \\title{Software Engineer}
-\\phone{+1 (555) 123-4567}
+\\address{Your Address}{City, State}{Country}
+\\phone[mobile]{+1~(555)~123~4567}
 \\email{your.email@example.com}
-\\social[github]{your-github}
-\\social[linkedin]{your-linkedin}
+\\homepage{www.yourwebsite.com}
+\\social[linkedin]{yourlinkedin}
+\\social[github]{yourgithub}
 
-% Document Content
 \\begin{document}
 \\makecvtitle
 
-% Summary Section
-\\section{Professional Summary}
-Your professional summary here...
-
 % Experience Section
-\\section{Professional Experience}
-\\cventry{2020--Present}
-{Software Engineer}
-{Company Name}
-{Location}
-{}{Description of role and achievements}
-
-% Skills Section
-\\section{Technical Skills}
-\\cvitem{Languages}{JavaScript, Python, Java, C++}
-\\cvitem{Frameworks}{React, Node.js, Django, Spring}
+\\section{Experience}
+\\cventry{2020--Present}{Senior Software Engineer}{Company Name}{City}{}{%
+  \\begin{itemize}%
+    \\item Developed and maintained web applications using React and Node.js
+    \\item Led a team of 5 developers in agile development practices
+    \\item Improved application performance by 40\\% through optimization
+  \\end{itemize}}
 
 % Education Section
 \\section{Education}
-\\cventry{2016--2020}
-{Bachelor of Science in Computer Science}
-{University Name}
-{Location}
-{GPA: 3.8/4.0}{Relevant coursework and achievements}
+\\cventry{2016--2020}{Bachelor of Science in Computer Science}{University Name}{City}{GPA: 3.8/4.0}{}
+
+% Skills Section
+\\section{Technical Skills}
+\\cvitemwithcomment{Languages}{JavaScript, Python, Java, C++}{}
+\\cvitemwithcomment{Frameworks}{React, Node.js, Express, Django}{}
+\\cvitemwithcomment{Tools}{Git, Docker, AWS, Jenkins}{}
 
 \\end{document}`}
-                </pre>
+                </div>
                 
-                <div className="preview-info mt-3">
-                  <h5>How to Use:</h5>
-                  <ol>
-                    <li>Download the template files</li>
-                    <li>Install a LaTeX distribution (TeX Live, MiKTeX) or use Overleaf</li>
-                    <li>Customize the content with your information</li>
-                    <li>Compile to generate your PDF resume</li>
-                  </ol>
+                <div className="preview-note">
+                  <strong>Note:</strong> This is a simplified example. The actual template includes more sections, 
+                  better formatting, and additional customization options. Download the full template to see all features.
                 </div>
               </div>
             </div>
             <div className="modal-footer">
-              <button 
-                type="button" 
-                className="btn btn-primary"
-                onClick={handleDownload}
-              >
+              <button className="btn btn-primary" onClick={handleDownload}>
                 <FaDownload className="me-2" />
-                Download Template
+                Download Full Template
               </button>
-              <button 
-                type="button" 
-                className="btn btn-secondary"
-                onClick={closePreview}
-              >
+              <button className="btn btn-secondary" onClick={closePreview}>
                 Close
               </button>
             </div>
           </div>
         </div>
       )}
-    </div>
+    </section>
   );
 };
 

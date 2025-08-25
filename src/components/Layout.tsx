@@ -71,8 +71,8 @@ const Layout: React.FC = () => {
           <Testimonials />
           <Skills />
           <Blog />
-          <LaTeXTemplate />
           <Contact />
+          <LaTeXTemplate />
         </main>
         <Footer />
       </div>

@@ -1,0 +1,1250 @@
+// Albanian Heritage Resume Generator Styles
+.resumeGenerator {
+  min-height: 100vh;
+  background: linear-gradient(135deg, 
+    var(--clean-white, #ffffff) 0%, 
+    rgba(248, 250, 252, 0.98) 20%,
+    rgba(241, 245, 249, 0.95) 40%,
+    rgba(226, 232, 240, 0.9) 60%,
+    rgba(203, 213, 225, 0.85) 80%,
+    rgba(148, 163, 184, 0.8) 100%
+  );
+  position: relative;
+  
+  // Enhanced Albanian heritage pattern overlay
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      radial-gradient(circle at 80% 20%, rgba(228, 30, 32, 0.04) 2px, transparent 2px),
+      radial-gradient(circle at 20% 80%, rgba(228, 30, 32, 0.03) 1px, transparent 1px),
+      linear-gradient(135deg, rgba(228, 30, 32, 0.05) 0%, transparent 60%),
+      repeating-linear-gradient(45deg, transparent, transparent 50px, rgba(228, 30, 32, 0.01) 50px, rgba(228, 30, 32, 0.01) 52px);
+    background-size: 80px 80px, 120px 120px, 100% 100%, 100px 100px;
+    pointer-events: none;
+    z-index: 1;
+  }
+  
+  // Dark theme - Enhanced Albanian heritage night mode
+  :global([data-theme="dark"]) & {
+    background: linear-gradient(135deg, 
+      var(--pure-black, #000000) 0%, 
+      #0a0a0a 30%, 
+      #1a1a1a 70%, 
+      #0f0f0f 100%
+    );
+    
+    &::before {
+      background: 
+        radial-gradient(circle at 80% 20%, rgba(228, 30, 32, 0.12) 2px, transparent 2px),
+        radial-gradient(circle at 20% 80%, rgba(228, 30, 32, 0.08) 1px, transparent 1px),
+        linear-gradient(135deg, rgba(228, 30, 32, 0.15) 0%, transparent 60%),
+        repeating-linear-gradient(45deg, transparent, transparent 50px, rgba(228, 30, 32, 0.03) 50px, rgba(228, 30, 32, 0.03) 52px);
+      background-size: 80px 80px, 120px 120px, 100% 100%, 100px 100px;
+    }
+  }
+  
+  > * {
+    position: relative;
+    z-index: 2;
+  }
+
+  .generatorHeader {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    padding: 3rem 0;
+    color: var(--dark-charcoal, #1a1a1a);
+    text-align: center;
+    border-bottom: 1px solid rgba(228, 30, 32, 0.1);
+    position: relative;
+    
+    // Albanian heritage accent line
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--albanian-red, #E41E20) 0%, rgba(228, 30, 32, 0.6) 100%);
+      border-radius: 2px;
+    }
+    
+    // Dark theme
+    :global([data-theme="dark"]) & {
+      background: rgba(26, 26, 26, 0.2);
+      color: var(--clean-white, #ffffff);
+      border-bottom-color: rgba(228, 30, 32, 0.2);
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 700;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, var(--albanian-red, #E41E20) 0%, var(--dark-charcoal, #1a1a1a) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-shadow: none;
+      position: relative;
+      
+      // Dark theme gradient
+      :global([data-theme="dark"]) & {
+        background: linear-gradient(135deg, var(--albanian-red, #E41E20) 0%, var(--clean-white, #ffffff) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+    }
+
+    .subtitle {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      color: var(--text-secondary, #6b7280);
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.6;
+      font-weight: 500;
+      
+      :global([data-theme="dark"]) & {
+        color: var(--text-secondary, #9ca3af);
+      }
+    }
+
+    .headerActions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+
+      .btn {
+        backdrop-filter: blur(10px);
+        border: 2px solid var(--albanian-red, #E41E20);
+        background: rgba(228, 30, 32, 0.1);
+        color: var(--albanian-red, #E41E20);
+        font-weight: 600;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        padding: 0.75rem 1.5rem;
+        border-radius: 0.75rem;
+        position: relative;
+        overflow: hidden;
+
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: -100%;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(90deg, transparent, rgba(228, 30, 32, 0.2), transparent);
+          transition: left 0.5s ease;
+        }
+
+        &:hover {
+          background: var(--albanian-red, #E41E20);
+          color: white;
+          transform: translateY(-2px);
+          box-shadow: 0 8px 25px rgba(228, 30, 32, 0.3);
+          
+          &::before {
+            left: 100%;
+          }
+        }
+        
+        &:focus {
+          outline: none;
+          box-shadow: 0 0 0 3px rgba(228, 30, 32, 0.25);
+        }
+      }
+    }
+  }
+
+  .generatorContent {
+    padding: 3rem 0;
+  }
+
+  .generatorLayout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+
+    @media (max-width: 1200px) {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+
+  .formPanel {
+    background: white;
+    border-radius: 20px;
+    padding: 2.5rem;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .previewPanel {
+    position: sticky;
+    top: 2rem;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    overflow: hidden;
+
+    @media (max-width: 1200px) {
+      position: relative;
+      top: 0;
+    }
+  }
+}
+
+// Form Section Styles
+.formSection {
+  .formGroup {
+    margin-bottom: 3rem;
+    
+    h3 {
+      color: #2c3e50;
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      border-bottom: 3px solid #667eea;
+      padding-bottom: 0.5rem;
+    }
+
+    .sectionHeader {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      padding: 1rem;
+      background: rgba(228, 30, 32, 0.02);
+      border-radius: 12px;
+      border-left: 4px solid var(--albanian-red, #E41E20);
+
+      h3 {
+        margin-bottom: 0;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        color: var(--albanian-red, #E41E20);
+        
+        svg {
+          font-size: 1.2rem;
+          opacity: 0.8;
+        }
+      }
+
+      .sectionControls {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        
+                .toggleVisibility {
+          background: transparent;
+          border: 2px solid var(--albanian-red, #E41E20);
+          color: var(--albanian-red, #E41E20);
+          padding: 0.5rem;
+          border-radius: 8px;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          min-width: 40px;
+          height: 40px;
+          
+          &:hover {
+            background: var(--albanian-red, #E41E20);
+            color: white;
+            transform: scale(1.05);
+          }
+          
+          &.sectionHidden {
+            background: rgba(228, 30, 32, 0.1);
+            opacity: 0.7;
+          }
+        }
+        
+        .optionalBadge {
+          background: linear-gradient(135deg, rgba(228, 30, 32, 0.1) 0%, rgba(228, 30, 32, 0.05) 100%);
+          color: var(--albanian-red, #E41E20);
+          padding: 0.375rem 0.875rem;
+          border-radius: 20px;
+          font-size: 0.75rem;
+          font-weight: 700;
+          border: 2px solid rgba(228, 30, 32, 0.2);
+          text-transform: uppercase;
+          letter-spacing: 0.8px;
+          white-space: nowrap;
+          backdrop-filter: blur(5px);
+          box-shadow: 0 2px 8px rgba(228, 30, 32, 0.1);
+          animation: pulse-badge 3s ease-in-out infinite;
+          
+          &::before {
+            content: '✨';
+            margin-right: 0.25rem;
+            font-size: 0.7rem;
+          }
+          
+          :global([data-theme="dark"]) & {
+            background: linear-gradient(135deg, rgba(228, 30, 32, 0.2) 0%, rgba(228, 30, 32, 0.1) 100%);
+            border-color: rgba(228, 30, 32, 0.4);
+            box-shadow: 0 2px 8px rgba(228, 30, 32, 0.2);
+          }
+        }
+      }
+
+      .btn {
+        background: linear-gradient(135deg, var(--albanian-red, #E41E20) 0%, #c41e3a 100%);
+        border: none;
+        color: white;
+        font-weight: 600;
+        padding: 0.75rem 1.5rem;
+        border-radius: 25px;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 4px 15px rgba(228, 30, 32, 0.2);
+
+        &:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 8px 25px rgba(228, 30, 32, 0.4);
+          background: linear-gradient(135deg, #c41e3a 0%, var(--albanian-red, #E41E20) 100%);
+        }
+      }
+    }
+
+    .sectionControls {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      
+      .optionalBadge {
+        background: rgba(var(--albanian-red-rgb, 228, 30, 32), 0.1);
+        color: var(--albanian-red, #E41E20);
+        padding: 0.25rem 0.75rem;
+        border-radius: 1rem;
+        font-size: 0.75rem;
+        font-weight: 600;
+        border: 1px solid rgba(var(--albanian-red-rgb, 228, 30, 32), 0.2);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        white-space: nowrap;
+      }
+    }
+  }
+
+  .formRow {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+
+    &.single {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .formField {
+    display: flex;
+    flex-direction: column;
+
+    &.fullWidth {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      font-weight: 600;
+      color: #2c3e50;
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+    }
+
+    input, textarea {
+      padding: 0.75rem 1rem;
+      border: 2px solid #e1e8ed;
+      border-radius: 10px;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      background: #f8f9fa;
+
+      &:focus {
+        outline: none;
+        border-color: var(--albanian-red, #E41E20);
+        background: white;
+        box-shadow: 0 0 0 3px rgba(228, 30, 32, 0.1);
+      }
+
+      &.error {
+        border-color: #e74c3c;
+        background: #fdf2f2;
+
+        &:focus {
+          border-color: #e74c3c;
+          box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1);
+        }
+      }
+
+      &::placeholder {
+        color: #adb5bd;
+        opacity: 1;
+      }
+    }
+
+    .errorMessage {
+      color: #e74c3c;
+      font-size: 0.85rem;
+      margin-top: 0.5rem;
+      font-weight: 500;
+    }
+
+    &.error input, &.error textarea {
+      border-color: #e74c3c;
+      background-color: #fef2f2;
+    }
+  }
+
+  // Missing classes for FormSection component
+  .formGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .section {
+    margin-bottom: 3rem;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(228, 30, 32, 0.1);
+    transition: all 0.3s ease;
+
+    &.sectionHidden {
+      opacity: 0.6;
+      filter: grayscale(0.5);
+    }
+
+    &.personalInfoSection {
+      border-left: 4px solid var(--albanian-red, #E41E20);
+    }
+
+    &.educationSection {
+      border-left: 4px solid #3b82f6;
+    }
+
+    &.technicalSkillsSection {
+      border-left: 4px solid #10b981;
+    }
+
+    &.workExperienceSection {
+      border-left: 4px solid #f59e0b;
+    }
+
+    &.projectsSection {
+      border-left: 4px solid #8b5cf6;
+    }
+
+    &.leadershipSection {
+      border-left: 4px solid #ef4444;
+    }
+  }
+
+  .error {
+    border-color: #e74c3c !important;
+    background-color: #fef2f2 !important;
+  }
+
+  .dynamic-section {
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 15px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border: 2px solid rgba(228, 30, 32, 0.1);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+    position: relative;
+    overflow: hidden;
+    
+    // Albanian heritage accent line
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--albanian-red, #E41E20) 0%, rgba(228, 30, 32, 0.3) 100%);
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+
+    &:hover {
+      border-color: var(--albanian-red, #E41E20);
+      box-shadow: 0 8px 30px rgba(228, 30, 32, 0.15);
+      transform: translateY(-2px);
+      
+      &::before {
+        transform: scaleX(1);
+      }
+    }
+    
+    &.section-hidden {
+      opacity: 0.6;
+      transform: scale(0.98);
+      pointer-events: none;
+    }
+
+      .sectionControls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+
+      h4 {
+        color: var(--albanian-red, #E41E20);
+        font-size: 1.2rem;
+        font-weight: 700;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        
+        svg {
+          opacity: 0.8;
+        }
+      }
+
+      .optional-badge {
+        background: linear-gradient(135deg, rgba(228, 30, 32, 0.1) 0%, rgba(228, 30, 32, 0.05) 100%);
+        color: var(--albanian-red, #E41E20);
+        padding: 0.25rem 0.75rem;
+        border-radius: 1rem;
+        font-size: 0.75rem;
+        font-weight: 600;
+        border: 1px solid rgba(228, 30, 32, 0.2);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .btn-danger {
+        background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+        border: none;
+        color: white;
+        padding: 0.5rem;
+        border-radius: 50%;
+        width: 2.5rem;
+        height: 2.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 8px rgba(231, 76, 60, 0.2);
+
+        &:hover {
+          background: linear-gradient(135deg, #c0392b 0%, #a93226 100%);
+          transform: scale(1.1);
+          box-shadow: 0 4px 15px rgba(231, 76, 60, 0.4);
+        }
+      }
+    }
+  }
+
+  .array-input {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+    align-items: flex-start;
+
+    input {
+      flex: 1;
+    }
+
+    .array-controls {
+      display: flex;
+      gap: 0.25rem;
+
+      button {
+        background: #6c757d;
+        border: none;
+        color: white;
+        padding: 0.5rem;
+        border-radius: 5px;
+        width: 2rem;
+        height: 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.75rem;
+        transition: all 0.3s ease;
+
+        &:hover {
+          background: #5a6268;
+          transform: scale(1.1);
+        }
+
+        &:first-child {
+          background: #28a745;
+
+          &:hover {
+            background: #218838;
+          }
+        }
+
+        &:last-child {
+          background: #dc3545;
+
+          &:hover {
+            background: #c82333;
+          }
+        }
+      }
+    }
+  }
+}
+
+// LaTeX Preview Styles
+.latex-preview {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .preview-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 2rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+
+    h3 {
+      margin: 0;
+      font-size: 1.3rem;
+      font-weight: 700;
+    }
+
+    .preview-actions {
+      display: flex;
+      gap: 0.75rem;
+
+      .btn {
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-weight: 600;
+        font-size: 0.85rem;
+        transition: all 0.3s ease;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+
+        &.btn-secondary {
+          background: rgba(255, 255, 255, 0.1);
+          color: white;
+
+          &:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+          }
+
+          &.copied {
+            background: #28a745;
+            border-color: #28a745;
+          }
+        }
+
+        &.btn-primary {
+          background: white;
+          color: #667eea;
+
+          &:hover {
+            background: #f8f9fa;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+          }
+        }
+      }
+    }
+  }
+
+  .preview-content {
+    flex: 1;
+    background: #1e1e1e;
+    color: #d4d4d4;
+    overflow: auto;
+    max-height: 60vh;
+
+    pre {
+      margin: 0;
+      padding: 1.5rem;
+      font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+      font-size: 0.85rem;
+      line-height: 1.5;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+
+      code {
+        // LaTeX syntax highlighting
+        :global(.latex-comment) {
+          color: #6a9955;
+          font-style: italic;
+        }
+
+        :global(.latex-command) {
+          color: #569cd6;
+          font-weight: 600;
+        }
+
+        :global(.latex-brace) {
+          color: #ffd700;
+          font-weight: bold;
+        }
+
+        :global(.latex-math) {
+          color: #ce9178;
+        }
+
+        :global(.latex-optional) {
+          color: #9cdcfe;
+        }
+      }
+    }
+  }
+
+  .usage-instructions {
+    padding: 2rem;
+    background: #f8f9fa;
+    border-top: 1px solid #e9ecef;
+
+    h4 {
+      color: #2c3e50;
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    ol {
+      margin-bottom: 1.5rem;
+
+      li {
+        margin-bottom: 0.75rem;
+        line-height: 1.6;
+
+        strong {
+          color: #2c3e50;
+        }
+
+        ul {
+          margin-top: 0.5rem;
+          margin-bottom: 0;
+
+          li {
+            margin-bottom: 0.25rem;
+          }
+        }
+
+        a {
+          color: #667eea;
+          text-decoration: none;
+          font-weight: 600;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+
+    .pro-tip {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 1rem 1.5rem;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      line-height: 1.5;
+
+      strong {
+        font-weight: 700;
+      }
+
+      a {
+        color: #fff;
+        text-decoration: underline;
+
+        &:hover {
+          color: #f8f9fa;
+        }
+      }
+    }
+  }
+}
+
+// Loading overlay
+.loadingOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+
+  .loadingSpinner {
+    background: #667eea;
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 1rem;
+    animation: pulse 2s infinite;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+// Albanian Heritage Animations
+@keyframes pulse-badge {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 2px 8px rgba(228, 30, 32, 0.1);
+  }
+  50% {
+    transform: scale(1.02);
+    box-shadow: 0 4px 15px rgba(228, 30, 32, 0.2);
+  }
+}
+
+@keyframes albanian-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes heritage-glow {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(228, 30, 32, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(228, 30, 32, 0.4), 0 0 30px rgba(228, 30, 32, 0.1);
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .resume-generator {
+    .generator-header {
+      padding: 1.5rem 0;
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .subtitle {
+        font-size: 1rem;
+      }
+
+      .header-actions {
+        .btn {
+          padding: 0.5rem 1rem;
+          font-size: 0.9rem;
+        }
+      }
+    }
+
+    .generator-content {
+      padding: 1.5rem 0;
+    }
+
+    .form-panel,
+    .preview-panel {
+      padding: 1.5rem;
+    }
+
+    .form-section {
+      .form-row {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      .dynamic-section {
+        padding: 1.5rem;
+      }
+
+      .section-header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1rem;
+
+        .btn {
+          align-self: flex-start;
+        }
+      }
+    }
+
+    .latex-preview {
+      .preview-header {
+        padding: 1rem 1.5rem;
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+
+        .preview-actions {
+          justify-content: center;
+        }
+      }
+
+      .usage-instructions {
+        padding: 1.5rem;
+
+        .pro-tip {
+          padding: 0.75rem 1rem;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .resume-generator {
+    .generator-header {
+      h1 {
+        font-size: 1.75rem;
+      }
+
+      .header-actions {
+        flex-direction: column;
+        align-items: center;
+
+        .btn {
+          width: 200px;
+        }
+      }
+    }
+
+    .form-panel,
+    .preview-panel {
+      padding: 1rem;
+      border-radius: 15px;
+    }
+
+    .form-section {
+      .array-input {
+        flex-direction: column;
+        gap: 0.5rem;
+
+        .array-controls {
+          flex-direction: row;
+          justify-content: center;
+        }
+      }
+    }
+
+    .latex-preview {
+      .preview-content {
+        max-height: 50vh;
+
+        pre {
+          padding: 1rem;
+          font-size: 0.75rem;
+        }
+      }
+
+      .preview-actions {
+        flex-direction: column;
+        width: 100%;
+
+        .btn {
+          width: 100%;
+          justify-content: center;
+        }
+      }
+    }
+  }
+}
+
+// Enhanced LaTeX Preview Styling with Albanian Heritage
+:global(.latex-preview) {
+  .preview-header {
+    background: linear-gradient(135deg, rgba(228, 30, 32, 0.1) 0%, rgba(228, 30, 32, 0.05) 100%);
+    padding: 1.5rem;
+    border-radius: 15px 15px 0 0;
+    border-bottom: 2px solid rgba(228, 30, 32, 0.2);
+    
+    h3 {
+      color: var(--albanian-red, #E41E20);
+      margin-bottom: 1rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .preview-actions {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      
+      .btn {
+        backdrop-filter: blur(5px);
+        border: 2px solid var(--albanian-red, #E41E20);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        
+        &.btn-primary {
+          background: var(--albanian-red, #E41E20);
+          color: white;
+          
+          &:hover {
+            background: #c41e3a;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(228, 30, 32, 0.3);
+          }
+        }
+        
+        &.btn-secondary {
+          background: rgba(228, 30, 32, 0.1);
+          color: var(--albanian-red, #E41E20);
+          
+          &:hover {
+            background: var(--albanian-red, #E41E20);
+            color: white;
+            transform: translateY(-2px);
+          }
+          
+          &.copied {
+            background: #28a745;
+            border-color: #28a745;
+            color: white;
+          }
+        }
+      }
+    }
+  }
+  
+  .preview-content {
+    .code-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
+      background: rgba(248, 249, 250, 0.8);
+      border-bottom: 1px solid rgba(228, 30, 32, 0.1);
+      
+      .code-title {
+        font-weight: 600;
+        color: var(--text-primary, #1a1a1a);
+      }
+      
+      .albanian-badge {
+        background: linear-gradient(135deg, var(--albanian-red, #E41E20) 0%, #c41e3a 100%);
+        color: white;
+        padding: 0.25rem 0.75rem;
+        border-radius: 20px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        box-shadow: 0 2px 8px rgba(228, 30, 32, 0.2);
+      }
+    }
+    
+    pre {
+      max-height: 400px;
+      overflow-y: auto;
+      background: #f8f9fa;
+      border: none;
+      margin: 0;
+      
+      &::-webkit-scrollbar {
+        width: 8px;
+      }
+      
+      &::-webkit-scrollbar-track {
+        background: rgba(228, 30, 32, 0.1);
+      }
+      
+      &::-webkit-scrollbar-thumb {
+        background: rgba(228, 30, 32, 0.3);
+        border-radius: 4px;
+        
+        &:hover {
+          background: rgba(228, 30, 32, 0.5);
+        }
+      }
+    }
+  }
+  
+  .usage-instructions {
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 0 0 15px 15px;
+    
+    h4 {
+      color: var(--albanian-red, #E41E20);
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+    }
+    
+    .instructions-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+      
+      .instruction-card {
+        background: white;
+        border: 2px solid rgba(228, 30, 32, 0.1);
+        border-radius: 12px;
+        padding: 1.5rem;
+        transition: all 0.3s ease;
+        
+        &:hover {
+          border-color: var(--albanian-red, #E41E20);
+          transform: translateY(-3px);
+          box-shadow: 0 8px 25px rgba(228, 30, 32, 0.15);
+        }
+        
+        .card-header {
+          display: flex;
+          align-items: center;
+          gap: 0.75rem;
+          margin-bottom: 1rem;
+          
+          .card-icon {
+            color: var(--albanian-red, #E41E20);
+            font-size: 1.2rem;
+          }
+          
+          h5 {
+            color: var(--text-primary, #1a1a1a);
+            margin: 0;
+            font-weight: 600;
+          }
+        }
+        
+        p, ul {
+          color: var(--text-secondary, #6b7280);
+          line-height: 1.6;
+          margin-bottom: 0;
+        }
+        
+        ul {
+          padding-left: 1.2rem;
+          
+          li {
+            margin-bottom: 0.25rem;
+          }
+        }
+        
+        a {
+          color: var(--albanian-red, #E41E20);
+          text-decoration: none;
+          font-weight: 600;
+          
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+        
+        code {
+          background: rgba(228, 30, 32, 0.1);
+          color: var(--albanian-red, #E41E20);
+          padding: 0.2rem 0.4rem;
+          border-radius: 4px;
+          font-size: 0.9rem;
+        }
+      }
+    }
+    
+    .pro-tip {
+      background: linear-gradient(135deg, rgba(228, 30, 32, 0.05) 0%, rgba(228, 30, 32, 0.02) 100%);
+      border: 2px solid rgba(228, 30, 32, 0.2);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      position: relative;
+      overflow: hidden;
+      
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: linear-gradient(90deg, var(--albanian-red, #E41E20) 0%, #c41e3a 100%);
+      }
+      
+      .tip-header {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin-bottom: 1rem;
+        
+        .tip-emoji {
+          font-size: 1.5rem;
+        }
+        
+        strong {
+          color: var(--albanian-red, #E41E20);
+          font-weight: 700;
+        }
+      }
+      
+      p {
+        color: var(--text-secondary, #6b7280);
+        margin: 0;
+        line-height: 1.6;
+      }
+    }
+    
+    .quick-links {
+      h5 {
+        color: var(--albanian-red, #E41E20);
+        margin-bottom: 1rem;
+        font-weight: 600;
+      }
+      
+      .links-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 0.75rem;
+        
+        a {
+          background: white;
+          border: 2px solid rgba(228, 30, 32, 0.2);
+          color: var(--albanian-red, #E41E20);
+          padding: 0.75rem 1rem;
+          border-radius: 8px;
+          text-decoration: none;
+          font-weight: 600;
+          text-align: center;
+          transition: all 0.3s ease;
+          
+          &:hover {
+            background: var(--albanian-red, #E41E20);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(228, 30, 32, 0.2);
+          }
+        }
+      }
+    }
+  }
+}

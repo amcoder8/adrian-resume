@@ -14,7 +14,6 @@ import {
   FaInstagram
 } from 'react-icons/fa';
 import { SiTiktok } from 'react-icons/si';
-import ResumeGenerator from './ResumeGenerator';
 
 interface FormData {
   name: string;
@@ -529,32 +528,6 @@ const Contact: React.FC = () => {
                   )}
                 </form>
               </div>
-            </div>
-          </div>
-
-          {/* Resume Generator Section */}
-          <div className="row mt-5">
-            <div className="col-12">
-              <div className="text-center mb-4">
-                <h3 className="section-subtitle">Professional Resume</h3>
-                <p className="text">
-                  Download my comprehensive resume with detailed work experience, 
-                  skills, and achievements in PDF format.
-                </p>
-              </div>
-              <ResumeGenerator 
-                personalInfo={{
-                  name: 'Adrian Mustafa',
-                  title: 'Frontend Developer',
-                  email: 'adrian@example.com',
-                  phone: '+1 (847) 343-0291',
-                  location: 'Chicago, IL'
-                }}
-                socialLinks={[
-                  { platform: 'linkedin', url: 'https://linkedin.com/in/adrian' },
-                  { platform: 'github', url: 'https://github.com/adrian' }
-                ]}
-              />
             </div>
           </div>
 

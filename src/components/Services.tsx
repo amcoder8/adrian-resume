@@ -37,18 +37,10 @@ interface Service {
   popular?: boolean;
 }
 
-interface ServicePackage {
-  id: string;
-  name: string;
-  description: string;
-  price: string;
-  features: string[];
-  highlight?: boolean;
-}
-
 const Services: React.FC = () => {
   const [activeService, setActiveService] = useState<string | null>(null);
   const [isVisible, setIsVisible] = useState(false);
+  const [showAllServices, setShowAllServices] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -174,54 +166,6 @@ const Services: React.FC = () => {
     }
   ];
 
-  const packages: ServicePackage[] = [
-    {
-      id: 'starter',
-      name: 'Starter Website',
-      description: 'Perfect for small businesses and startups',
-      price: '$1,500 - $2,500',
-      features: [
-        'Up to 5 pages',
-        'Responsive design',
-        'Contact form',
-        'Basic SEO setup',
-        'Mobile optimization',
-        '3 months support'
-      ]
-    },
-    {
-      id: 'professional',
-      name: 'Professional Website',
-      description: 'Ideal for established businesses',
-      price: '$3,000 - $5,000',
-      features: [
-        'Up to 15 pages',
-        'Custom design',
-        'CMS integration',
-        'Advanced SEO',
-        'Analytics setup',
-        'E-commerce ready',
-        '6 months support'
-      ],
-      highlight: true
-    },
-    {
-      id: 'enterprise',
-      name: 'Enterprise Solution',
-      description: 'For large-scale projects and complex requirements',
-      price: 'Custom Quote',
-      features: [
-        'Unlimited pages',
-        'Custom functionality',
-        'API integrations',
-        'Performance optimization',
-        'Security hardening',
-        'Training included',
-        '12 months support'
-      ]
-    }
-  ];
-
   const toggleService = (serviceId: string) => {
     setActiveService(activeService === serviceId ? null : serviceId);
   };
@@ -239,7 +183,7 @@ const Services: React.FC = () => {
 
         {/* Services Grid */}
         <div className="services-grid">
-          {services.map((service, index) => (
+          {(showAllServices ? services : services.slice(0, 3)).map((service, index) => (
             <div
               key={service.id}
               className={`service-card ${isVisible ? 'animate' : ''} ${
@@ -313,62 +257,38 @@ const Services: React.FC = () => {
           ))}
         </div>
 
-        {/* Service Packages */}
-        <div className="packages-section">
-          <div className="packages-header">
-            <h3>Service Packages</h3>
-            <p>Choose the perfect package for your needs</p>
+        {/* Show More/Less Button */}
+        {services.length > 3 && (
+          <div className="services-toggle">
+            <button 
+              className="toggle-services-btn"
+              onClick={() => setShowAllServices(!showAllServices)}
+            >
+              <span>
+                {showAllServices ? 'Show Less Services' : `Show All ${services.length} Services`}
+              </span>
+              <FaArrowRight className={showAllServices ? 'rotated-up' : ''} />
+            </button>
           </div>
-
-          <div className="packages-grid">
-            {packages.map((pkg) => (
-              <div
-                key={pkg.id}
-                className={`package-card ${pkg.highlight ? 'highlight' : ''}`}
-              >
-                {pkg.highlight && (
-                  <div className="package-badge">Most Popular</div>
-                )}
-                
-                <div className="package-header">
-                  <h4 className="package-name">{pkg.name}</h4>
-                  <p className="package-description">{pkg.description}</p>
-                  <div className="package-price">{pkg.price}</div>
-                </div>
-
-                <div className="package-features">
-                  <ul>
-                    {pkg.features.map((feature, idx) => (
-                      <li key={idx}>
-                        <FaCheck />
-                        <span>{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <button className="package-btn">
-                  Choose Package
-                  <FaArrowRight />
-                </button>
-              </div>
-            ))}
-          </div>
-        </div>
+        )}
 
         {/* Call to Action */}
         <div className="services-cta">
           <div className="cta-content">
-            <h3>Ready to start your project?</h3>
-            <p>Let's discuss your requirements and create something amazing together</p>
+            <h3>Every Project is Unique</h3>
+            <p>
+              I believe every project deserves a custom approach. Whether you need a simple website 
+              or a complex web application, let's discuss your specific requirements and create 
+              a tailored solution that fits your needs and budget.
+            </p>
             
             <div className="cta-buttons">
               <a href="#contact" className="primary-btn">
-                Get Free Quote
+                Get Custom Quote
                 <FaArrowRight />
               </a>
               <a href="#projects" className="secondary-btn">
-                View Portfolio
+                View My Work
               </a>
             </div>
           </div>

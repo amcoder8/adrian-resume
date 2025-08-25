@@ -842,9 +842,10 @@ code, pre {
     text-align: center;
     padding: 2rem 0;
     
-    // Add text shadow for better readability over 3D model
+    // Add text shadow for better readability over 3D model and set white text
     h1, h2, p {
       text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+      color: white !important;
     }
   }
   
@@ -3389,8 +3390,7 @@ code, pre {
 // Import blog section styles
 @import 'blog-section';
 
-// Import resume generator styles
-@import 'resume-generator';
-
 // Import latex template styles
 @import 'latex-template';
+
+
