@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FaSun, FaMoon, FaBars, FaTimes, FaHome, FaUser, FaCog, FaEnvelope, FaProjectDiagram, FaQuoteLeft, FaServicestack, FaBlog, FaFileAlt } from 'react-icons/fa';
+import { FaSun, FaMoon, FaBars, FaTimes, FaHome, FaUser, FaCog, FaEnvelope, FaProjectDiagram, FaQuoteLeft, FaServicestack } from 'react-icons/fa';
 import { useTheme } from './ThemeProvider';
 
 const Header: React.FC = () => {
@@ -13,7 +13,7 @@ const Header: React.FC = () => {
       setIsScrolled(window.scrollY > 100);
 
       // Update active section based on scroll position
-      const sections = ['home', 'about', 'services', 'projects', 'testimonials', 'skills', 'blog', 'contact'];
+      const sections = ['home', 'about', 'services', 'projects', 'testimonials', 'skills', 'contact'];
       const current = sections.find(section => {
         const element = document.getElementById(section);
         if (element) {
@@ -39,9 +39,7 @@ const Header: React.FC = () => {
     { label: 'Projects', href: '#projects', icon: <FaProjectDiagram /> },
     { label: 'Testimonials', href: '#testimonials', icon: <FaQuoteLeft /> },
     { label: 'Skills', href: '#skills', icon: <FaCog /> },
-    { label: 'Blog', href: '#blog', icon: <FaBlog /> },
     { label: 'Contact', href: '#contact', icon: <FaEnvelope /> },
-    { label: 'Resume Generator', href: '/resume-generator', icon: <FaFileAlt />, isExternal: true },
   ];
 
   const scrollToSection = (href: string) => {
@@ -81,7 +79,7 @@ const Header: React.FC = () => {
                 {navItems.map((item) => (
                   <button
                     key={item.label}
-                    className={`nav-link-static ${activeSection === item.href.slice(1) ? 'active' : ''} ${item.isExternal ? 'external-link' : ''}`}
+                    className={`nav-link-static ${activeSection === item.href.slice(1) ? 'active' : ''}`}
                     onClick={() => scrollToSection(item.href)}
                   >
                     {item.label}
@@ -126,7 +124,7 @@ const Header: React.FC = () => {
             {navItems.map((item, index) => (
               <button
                 key={item.label}
-                className={`nav-pill ${activeSection === item.href.slice(1) ? 'active' : ''} ${item.isExternal ? 'external-link' : ''}`}
+                className={`nav-pill ${activeSection === item.href.slice(1) ? 'active' : ''}`}
                 onClick={() => scrollToSection(item.href)}
                 title={item.label}
                 style={{ '--delay': `${index * 0.1}s` } as React.CSSProperties}
@@ -165,7 +163,7 @@ const Header: React.FC = () => {
             {navItems.map((item, index) => (
               <button
                 key={item.label}
-                className={`mobile-nav-item ${activeSection === item.href.slice(1) ? 'active' : ''} ${item.isExternal ? 'external-link' : ''}`}
+                className={`mobile-nav-item ${activeSection === item.href.slice(1) ? 'active' : ''}`}
                 onClick={() => scrollToSection(item.href)}
                 style={{ '--delay': `${index * 0.1}s` } as React.CSSProperties}
               >

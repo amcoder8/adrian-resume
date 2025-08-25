@@ -8,9 +8,7 @@ import Services from './Services';
 import Projects from './Projects';
 import Testimonials from './Testimonials';
 import Skills from './Skills';
-import Blog from './Blog';
 import Contact from './Contact';
-import LaTeXTemplate from './LaTeXTemplate';
 import Footer from './Footer';
 
 // Import styles
@@ -70,9 +68,7 @@ const Layout: React.FC = () => {
           <Projects />
           <Testimonials />
           <Skills />
-          <Blog />
           <Contact />
-          <LaTeXTemplate />
         </main>
         <Footer />
       </div>
